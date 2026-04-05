@@ -6,7 +6,7 @@
 <title>Waseem Designs</title>
 <style>
 body {font-family: Arial, sans-serif; margin:0; background:#f5f7fb; color:#222;}
-header {display:flex; justify-content:space-between; padding:15px 30px; background:white; position:sticky; top:0; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.05);} 
+header {display:flex; justify-content:space-between; padding:15px 30px; background:white; position:sticky; top:0; z-index:2000; box-shadow:0 2px 10px rgba(0,0,0,0.05);} 
 header h1 {color:#0077FF;}
 nav a {margin:0 12px; text-decoration:none; color:#222; font-weight:500;}
 .btn {padding:12px 22px; border-radius:25px; cursor:pointer; border:none; font-weight:600; margin:5px;}
@@ -14,8 +14,8 @@ nav a {margin:0 12px; text-decoration:none; color:#222; font-weight:500;}
 .btn-white {background:#fff; color:#222; border:1px solid #ddd;}
 .section {padding:80px 20px; text-align:center;}
 .hero {padding:80px 20px 0 20px; text-align:center;}
-.hero h2 {font-size:42px; line-height:1.3; margin-top:20px;}
-.hero p {max-width:700px; margin:20px auto;}
+.hero h2 {font-size:64px; line-height:1.2; margin-top:20px;}
+.hero p {max-width:750px; margin:25px auto; font-size:18px;}
 .banner {width:100%; height:350px; background:url('Banner.png') center/cover no-repeat; margin-top:40px;}
 .cards {display:flex; flex-wrap:wrap; justify-content:center; gap:25px;}
 .card {background:white; padding:25px; width:260px; border-radius:14px; box-shadow:0 10px 25px rgba(0,0,0,0.08); text-align:left; transition:0.3s;}
@@ -24,9 +24,11 @@ nav a {margin:0 12px; text-decoration:none; color:#222; font-weight:500;}
 .gallery-item {position:relative; cursor:pointer;}
 .gallery img {width:100%; border-radius:12px;}
 .overlay {position:absolute; bottom:0; background:rgba(0,0,0,0.6); color:#fff; width:100%; padding:10px; border-radius:0 0 12px 12px;}
-.modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000000e0; justify-content:center; align-items:center; flex-wrap:wrap; overflow:auto; padding:20px;}
+.modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000000e0; z-index:3000; justify-content:center; align-items:center; flex-wrap:wrap; overflow:auto; padding-top:80px;}
 .modal iframe, .modal img {margin:10px; max-width:300px;}
 .contact input, .contact textarea {width:80%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc;}
+.about-title {font-size:20px; margin-bottom:10px;}
+.about-main {font-size:48px;}
 footer {text-align:center; padding:20px; background:white;}
 </style>
 </head>
@@ -43,18 +45,15 @@ footer {text-align:center; padding:20px; background:white;}
 </nav>
 </header>
 
-<!-- PAGE 1 FIXED -->
 <section id="home" class="hero">
 <button class="btn btn-white">London-Based Digital Creator</button>
 <h2>Elevating Brands with<br><span style="color:#0077FF">Strategic</span> Social Media<br>Design</h2>
 <p>I specialize in creating high-converting YouTube thumbnails, engaging short-form videos, and cohesive social media assets that turn viewers into followers.</p>
 <button class="btn btn-blue" onclick="scrollToSection('portfolio')">View Full Portfolio</button>
 <button class="btn btn-white" onclick="scrollToSection('contact')">Book Consultation</button>
-
 <div class="banner"></div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="section">
 <h2>Core Expertise</h2>
 <p>Helping brands grow with high-impact design and video</p>
@@ -83,7 +82,6 @@ footer {text-align:center; padding:20px; background:white;}
 <button class="btn btn-white" onclick="scrollToSection('contact')">Contact Me</button>
 </section>
 
-<!-- PORTFOLIO -->
 <section id="portfolio" class="section">
 <h2>Recent Creative Work</h2>
 <div class="gallery">
@@ -100,8 +98,8 @@ footer {text-align:center; padding:20px; background:white;}
 </div>
 </section>
 
-<!-- MODALS -->
 <div id="videoModal" class="modal" onclick="closeModal()">
+<div>
 <iframe width="300" src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
 <iframe width="300" src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
 <iframe width="300" src="https://www.youtube.com/embed/07O40xrZhcg"></iframe>
@@ -111,31 +109,28 @@ footer {text-align:center; padding:20px; background:white;}
 <iframe width="300" src="https://www.youtube.com/embed/35iKyyiYhtw"></iframe>
 <iframe width="300" src="https://www.youtube.com/embed/aAD5Paf2DV4"></iframe>
 </div>
+</div>
 
 <div id="imageModal" class="modal" onclick="closeModal()">
-<img src="Banner.png">
 <img src="FBB 01.jpg">
 <img src="FBB 02.png">
 <img src="GRID SMP 01.jpg">
 <img src="GRID SMP 02.png">
 <img src="LIB 01.jpg">
 <img src="Mix SMP.jpg">
-<img src="Surf AI add.jpg">
 <img src="Thumbnails 02.jpg">
 <img src="Thumbnails 03.png">
 <img src="Youtube Banners 02.jpg">
 <img src="Youtube Banners 03.jpg">
 </div>
 
-<!-- ABOUT -->
 <section id="about" class="section">
-<h2 style="color:#0077FF">About Me</h2>
-<h3>Hi, I'm Waseem<br>I turn passive scrollers into <span style="color:#FF6B35">active followers</span></h3>
+<button class="btn btn-white" onclick="scrollToSection('about')">About Me</button>
+<h3 class="about-main">Hi, I'm Waseem<br>I turn passive scrollers into <span style="color:#FF6B35">active followers</span></h3>
 <p>Based in Croydon, London, I am a passionate content creator and social media manager dedicated to helping brands find their voice in digital noise</p>
 <img src="My Image.jpeg" width="200" style="border-radius:50%;">
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="section contact">
 <h2>Contact Me</h2>
 <form action="mailto:mandh.studios25@gmail.com" method="post" enctype="text/plain">
