@@ -1,114 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Waseem Designs</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Waseem Designs</title>
 <style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #0f172a;
-  color: white;
-}
-
-header {
-  text-align: center;
-  padding: 40px;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
-}
-
-h1 {
-  margin: 0;
-}
-
-.section {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 15px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.video {
-  max-width: 900px;
-  margin: 20px auto;
-}
-
-iframe {
-  width: 100%;
-  height: 400px;
-  border-radius: 10px;
-}
-
-.button {
-  display: inline-block;
-  padding: 12px 20px;
-  margin: 10px;
-  background: #2563eb;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  background: #020617;
-}
+body {font-family: Arial, sans-serif; margin:0; background:#f5f7fb;}
+header {display:flex; justify-content:space-between; padding:20px; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1);} 
+header h1 {color:#2b6cb0;}
+nav a {margin:0 10px; text-decoration:none; color:#333;}
+.hero {text-align:center; padding:80px 20px;}
+.hero h2 {font-size:40px;}
+.hero span {color:#2b6cb0;}
+.btn {padding:10px 20px; border:none; background:#2b6cb0; color:white; border-radius:20px; cursor:pointer;}
+.section {padding:60px 20px; text-align:center;}
+.cards {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
+.card {background:white; padding:20px; width:250px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1);} 
+.gallery img {width:250px; border-radius:10px;}
+.contact input, .contact textarea {width:80%; padding:10px; margin:10px 0;}
+footer {text-align:center; padding:20px; background:white;}
 </style>
-
 </head>
-
 <body>
-
 <header>
-<h1>Waseem Designs</h1>
-<p>Professional Thumbnail & Graphic Designer</p>
-
-<a href="mailto:your@email.com" class="button">Contact Me</a>
+<h1>Waseem.</h1>
+<nav>
+<a href="#">Services</a>
+<a href="#">Portfolio</a>
+<a href="#">About</a>
+<button class="btn">Get Started</button>
+</nav>
 </header>
 
-<div class="section">
-<h2>My Work</h2>
+<section class="hero">
+<h2>Elevating Brands with <span>Strategic</span> Social Media Design</h2>
+<p>I specialize in creating visuals that turn viewers into followers.</p>
+<button class="btn">View Full Portfolio</button>
+</section>
 
-<div class="grid">
+<section class="section">
+<h2>Core Expertise</h2>
+<div class="cards">
+<div class="card"><h3>Social Media Design</h3><p>Creative posts & branding</p></div>
+<div class="card"><h3>Video Production</h3><p>High quality video editing</p></div>
+<div class="card"><h3>Account Management</h3><p>Growth & engagement</p></div>
+</div>
+</section>
+
+<section class="section gallery">
+<h2>Recent Creative Work</h2>
+<img src="Banner.png">
 <img src="Thumbnails 01.jpg">
-<img src="Thumbnails 02.jpg">
-<img src="Thumbnails 03.png">
 <img src="Youtube Banners 01.jpg">
-<img src="Youtube Banners 02.jpg">
-<img src="Youtube Banners 03.jpg">
-<img src="Restaurant Promo.jpg">
-<img src="Corporate Promo.jpg">
-</div>
-</div>
+</section>
 
-<div class="section">
-<h2>Video Work</h2>
-
-<div class="video">
-<iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
+<section class="section">
+<h2>Video Gallery</h2>
+<div class="cards">
+<iframe width="300" src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
+<iframe width="300" src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
+<iframe width="300" src="https://www.youtube.com/embed/07O40xrZhcg"></iframe>
+<iframe width="300" src="https://www.youtube.com/embed/hh1J-vUrCSE"></iframe>
+<iframe width="300" src="https://www.youtube.com/embed/8DcwOoXqnf8"></iframe>
+<iframe width="300" src="https://www.youtube.com/embed/QesPdSOCHp0"></iframe>
+<iframe width="300" src="https://www.youtube.com/embed/35iKyyiYhtw"></iframe>
+<iframe width="300" src="https://www.youtube.com/embed/aAD5Paf2DV4"></iframe>
 </div>
+</section>
 
-<div class="video">
-<iframe src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
-</div>
+<section class="section">
+<h2>About Me</h2>
+<p>Hi, I'm Waseem. I turn passive scrollers into active followers.</p>
+</section>
 
-</div>
+<section class="section contact">
+<h2>Contact Me</h2>
+<form action="mailto:mandh.studios25@gmail.com" method="post" enctype="text/plain">
+<input type="text" placeholder="Your Name" required><br>
+<input type="email" placeholder="Your Email" required><br>
+<textarea placeholder="Your Message" required></textarea><br>
+<button class="btn">Send Message</button>
+</form>
+</section>
 
 <footer>
-<p>© Waseem Designs</p>
+<p>© 2026 Waseem Designs</p>
 </footer>
 
 </body>
