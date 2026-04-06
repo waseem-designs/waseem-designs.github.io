@@ -21,15 +21,15 @@ nav a {margin:0 12px; text-decoration:none; color:#222; font-weight:500;}
 .cards {display:flex; flex-wrap:wrap; justify-content:center; gap:25px;}
 .card {background:white; padding:25px; width:260px; border-radius:14px; box-shadow:0 10px 25px rgba(0,0,0,0.08); text-align:left; transition:0.3s; position:relative;}
 .card:hover {transform:translateY(-8px);} 
-.card p {min-height:80px;} /* alignment fix */
+.card p {min-height:80px;}
 .badge {position:absolute; top:10px; right:10px; background:#FF6B35; color:#fff; padding:5px 10px; border-radius:12px; font-size:12px;}
 .gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:20px;}
 .gallery-item {position:relative; cursor:pointer;}
 .gallery img {width:100%; border-radius:12px;}
 .overlay {position:absolute; bottom:0; background:rgba(0,0,0,0.6); color:#fff; width:100%; padding:10px; border-radius:0 0 12px 12px;}
 .modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000000e0; z-index:3000; justify-content:center; align-items:center; overflow:auto; padding:40px;}
-.modal-content {display:flex; flex-wrap:wrap; justify-content:center; align-items:center;}
-.modal iframe, .modal img {margin:10px; max-width:300px; border-radius:10px;}
+.modal-content {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; justify-items:center; width:100%; max-width:1100px;}
+.modal iframe, .modal img {width:100%; max-width:260px; border-radius:10px;}
 .contact input, .contact textarea {width:80%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc;}
 .about-main {font-size:48px;}
 footer {text-align:center; padding:20px; background:white;}
@@ -90,7 +90,7 @@ footer {text-align:center; padding:20px; background:white;}
 <h2>Recent Creative Work</h2>
 <div class="gallery">
 <div class="gallery-item" onclick="openVideos()">
-<img src="Videos Thumbnail.png">
+<img src="Videos Thumbnail.PNG">
 <div class="overlay">Video Ads & Marketing</div>
 </div>
 <div class="gallery-item" onclick="openImages()">
@@ -104,14 +104,14 @@ footer {text-align:center; padding:20px; background:white;}
 
 <div id="videoModal" class="modal" onclick="closeModal()">
 <div class="modal-content">
-<iframe width="300" src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
-<iframe width="300" src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
-<iframe width="300" src="https://www.youtube.com/embed/07O40xrZhcg"></iframe>
-<iframe width="300" src="https://www.youtube.com/embed/hh1J-vUrCSE"></iframe>
-<iframe width="300" src="https://www.youtube.com/embed/8DcwOoXqnf8"></iframe>
-<iframe width="300" src="https://www.youtube.com/embed/QesPdSOCHp0"></iframe>
-<iframe width="300" src="https://www.youtube.com/embed/35iKyyiYhtw"></iframe>
-<iframe width="300" src="https://www.youtube.com/embed/aAD5Paf2DV4"></iframe>
+<iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
+<iframe src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
+<iframe src="https://www.youtube.com/embed/07O40xrZhcg"></iframe>
+<iframe src="https://www.youtube.com/embed/hh1J-vUrCSE"></iframe>
+<iframe src="https://www.youtube.com/embed/8DcwOoXqnf8"></iframe>
+<iframe src="https://www.youtube.com/embed/QesPdSOCHp0"></iframe>
+<iframe src="https://www.youtube.com/embed/35iKyyiYhtw"></iframe>
+<iframe src="https://www.youtube.com/embed/aAD5Paf2DV4"></iframe>
 </div>
 </div>
 
