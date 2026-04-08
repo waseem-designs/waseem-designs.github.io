@@ -101,16 +101,58 @@ nav a{margin:0 12px;text-decoration:none;color:#222;font-weight:500}
 </div>
 
 <!-- PREVIEW -->
-<div id="preview" class="preview" onclick="this.style.display='none'">
+<div id="preview" class="preview" onclick="closePreview(event)">
+<span id="prevBtn" style="position:absolute;left:20px;color:white;font-size:40px;cursor:pointer;">❮</span>
 <img id="previewImg">
+<span id="nextBtn" style="position:absolute;right:20px;color:white;font-size:40px;cursor:pointer;">❯</span>
 </div>
 
 <script>
+let images=[];
+let currentIndex=0;
+
 function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+
 function openVideos(){document.getElementById('videoModal').style.display='block'}
-function openImages(){document.getElementById('imageModal').style.display='block'}
+function openImages(){
+ document.getElementById('imageModal').style.display='block';
+ images = Array.from(document.querySelectorAll('#imageModal img')).map(img=>img.src);
+}
+
 function closeModal(e){if(e.target!==e.currentTarget)return; e.currentTarget.style.display='none'}
-function preview(src){document.getElementById('preview').style.display='flex';document.getElementById('previewImg').src=src}
+
+function preview(src){
+ document.getElementById('preview').style.display='flex';
+ document.getElementById('previewImg').src=src;
+ currentIndex = images.indexOf(src);
+}
+
+function closePreview(e){
+ if(e.target.id==='previewImg' || e.target.id==='prevBtn' || e.target.id==='nextBtn') return;
+ document.getElementById('preview').style.display='none';
+}
+
+function showNext(){
+ currentIndex = (currentIndex + 1) % images.length;
+ document.getElementById('previewImg').src = images[currentIndex];
+}
+
+function showPrev(){
+ currentIndex = (currentIndex - 1 + images.length) % images.length;
+ document.getElementById('previewImg').src = images[currentIndex];
+}
+
+document.getElementById('nextBtn').onclick = showNext;
+document.getElementById('prevBtn').onclick = showPrev;
+
+// swipe support
+let startX=0;
+document.getElementById('preview').addEventListener('touchstart',e=>startX=e.touches[0].clientX);
+document.getElementById('preview').addEventListener('touchend',e=>{
+ let endX=e.changedTouches[0].clientX;
+ if(endX-startX>50) showPrev();
+ if(startX-endX>50) showNext();
+});
 </script>
 </body>
 </html>
