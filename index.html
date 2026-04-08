@@ -8,174 +8,91 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
---blue:#0077FF;
---orange:#FF6B35;
---white:#fff;
---dark:#222;
-}
-
-body{
-font-family:Poppins,sans-serif;
-margin:0;
-background:#fff;
-color:#222;
-}
+body{font-family:Poppins,sans-serif;margin:0;background:#fff;color:#222}
 
 /* HEADER */
 header{
-display:flex;
-justify-content:space-between;
-padding:15px 30px;
-background:#fff;
-position:sticky;
-top:0;
-z-index:2000;
-box-shadow:0 2px 10px rgba(0,0,0,.05);
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 30px;background:#fff;position:sticky;top:0;
+z-index:2000;box-shadow:0 2px 10px rgba(0,0,0,.05)
 }
+header h1{color:#0077FF}
+nav a{margin:0 12px;text-decoration:none;color:#222;font-weight:500}
 
-header h1{color:var(--blue)}
+.btn{padding:12px 22px;border-radius:25px;border:none;cursor:pointer;font-weight:600}
+.btn-blue{background:#0077FF;color:#fff}
+.btn-white{background:#fff;color:#222;border:1px solid #ddd}
 
-nav a{
-margin:0 12px;
-text-decoration:none;
-color:#222;
-}
-
-/* BUTTONS */
-.btn{
-padding:12px 22px;
-border-radius:25px;
-cursor:pointer;
-border:none;
-font-weight:600;
-margin:5px;
-}
-
-.btn-blue{background:var(--blue);color:#fff}
-.btn-white{background:#fff;border:1px solid #ddd}
-
-/* HERO */
+/* SECTIONS */
 .section{padding:80px 20px;text-align:center}
-
-.hero h2{
-font-size:72px;
-line-height:1.1;
-}
-
-.hero p{
-max-width:750px;
-margin:20px auto;
-}
+.hero h2{font-size:72px;line-height:1.2}
+.hero p{max-width:750px;margin:25px auto;font-size:18px}
 
 .banner{
-width:100%;
-height:350px;
+width:100%;height:320px;
 background:url('Banner.png') center/cover no-repeat;
-margin-top:40px;
-border-radius:15px;
-}
-
-/* SERVICES */
-.services{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-max-width:1100px;
-margin:40px auto;
-}
-
-.card{
-background:#fff;
-padding:25px;
-border-radius:15px;
-box-shadow:0 10px 30px rgba(0,0,0,.05);
-text-align:left;
+margin-top:40px;border-radius:12px
 }
 
 /* GALLERY */
 .gallery{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:20px;
-max-width:1100px;
-margin:40px auto;
+gap:25px;
+max-width:1100px;margin:auto
+}
+
+.gallery-item{
+position:relative;cursor:pointer;border-radius:12px;overflow:hidden
 }
 
 .gallery img{
-width:100%;
-border-radius:10px;
-cursor:pointer;
+width:100%;display:block;border-radius:12px;
+transition:.3s
+}
+.gallery img:hover{transform:scale(1.05)}
+
+.overlay{
+position:absolute;bottom:0;width:100%;
+background:rgba(0,0,0,.6);color:#fff;
+padding:12px;font-weight:600
 }
 
 /* MODALS */
 .modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#fff;
-z-index:3000;
-overflow-y:auto;
-padding:60px 20px;
+display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:#fff;z-index:3000;overflow-y:auto;padding:60px 20px
 }
 
 .modal-content{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:20px;
-max-width:1100px;
-margin:auto;
+gap:25px;max-width:1100px;margin:auto
 }
 
 .modal iframe{
-width:100%;
-height:220px;
-border-radius:10px;
+width:100%;height:220px;border-radius:10px
 }
 
-.modal-footer{
-text-align:center;
-margin:60px auto;
-max-width:1100px;
-}
+.modal-footer{text-align:center;margin-top:40px}
 
-.modal-footer hr{
-margin-bottom:20px;
-}
-
-/* PREVIEW */
+/* IMAGE PREVIEW */
 .preview{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#000;
-justify-content:center;
-align-items:center;
-z-index:4000;
+display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.9);justify-content:center;align-items:center;
+z-index:4000
 }
 
 .preview img{
-max-width:90%;
-max-height:90vh;
+max-width:90%;max-height:90vh
 }
 
-.nav-btn{
-position:absolute;
-top:50%;
-font-size:50px;
-color:#fff;
-cursor:pointer;
+.arrow{
+position:absolute;color:#fff;font-size:50px;
+cursor:pointer;user-select:none
 }
-
-#prevBtn{left:20px}
-#nextBtn{right:20px}
-
+#prevBtn{left:30px}
+#nextBtn{right:30px}
 </style>
 </head>
 
@@ -193,7 +110,6 @@ cursor:pointer;
 
 <!-- HOME -->
 <section id="home" class="hero section">
-
 <button class="btn btn-white">London-Based Digital Creator</button>
 
 <h2>
@@ -203,66 +119,76 @@ Design
 </h2>
 
 <p>
-I specialize in creating high-converting YouTube thumbnails, engaging short-form videos,
-and cohesive social media assets that turn viewers into followers.
+I specialize in creating high-converting YouTube thumbnails,
+engaging short-form videos, and cohesive social media assets
+that turn viewers into followers.
 </p>
 
-<button class="btn btn-blue" onclick="openImages()">View Full Portfolio</button>
-<button class="btn btn-white" onclick="scrollToSection('contact')">Book Consultation</button>
+<button class="btn btn-blue" onclick="scrollToSection('portfolio')">
+View Full Portfolio
+</button>
+
+<button class="btn btn-white" onclick="scrollToSection('contact')">
+Book Consultation
+</button>
 
 <div class="banner"></div>
-
 </section>
 
 <!-- SERVICES -->
 <section id="services" class="section">
-
 <h2>Core Expertise</h2>
 <p>Helping brands grow with high-impact design and video</p>
 
-<div class="services">
-
-<div class="card">
+<div class="gallery">
+<div>
 <h3>Social Media Design</h3>
-<p>Visual storytelling that aligns with your brand identity. I create assets that stop the scroll</p>
+<p>Visual storytelling that aligns with your brand identity.
+I create assets that stop the scroll</p>
 <p>✔ Instagram Posts & Carousels</p>
 <p>✔ Facebook & LinkedIn Banners</p>
 </div>
 
-<div class="card">
-<h3>Video Production <span style="color:#fff;background:#FF6B35;padding:3px 8px;border-radius:8px;font-size:12px;">Most Popular</span></h3>
+<div>
+<h3>Video Production <span style="background:#FF6B35;color:#fff;padding:4px 10px;border-radius:10px;font-size:12px">Most Popular</span></h3>
 <p>Dynamic video editing and thumbnail design specially optimised for algorithm performance</p>
 <p>✔ Short-Form (Reels, TikTok, Shorts)</p>
 <p>✔ High CTR YouTube Thumbnails</p>
 </div>
 
-<div class="card">
+<div>
 <h3>Account Management</h3>
 <p>End-to-end management of your social presence, allowing you to focus on your business</p>
 <p>✔ Content Scheduling & Strategy</p>
 <p>✔ Growth Analytics Reporting</p>
 </div>
-
 </div>
-
 </section>
 
 <!-- PORTFOLIO -->
 <section id="portfolio" class="section">
-
 <h2>Recent Creative Work</h2>
 
 <div class="gallery">
-<img src="Videos Thumbnail.PNG" onclick="openVideos()">
-<img src="Immage gallery.png" onclick="openImages()">
-<img src="LIB 01.jpg">
+<div class="gallery-item" onclick="openVideos()">
+<img src="Videos Thumbnail.PNG">
+<div class="overlay">Video Ads & Marketing</div>
 </div>
 
+<div class="gallery-item" onclick="openImages()">
+<img src="Immage gallery.png">
+<div class="overlay">Explore All Work</div>
+</div>
+
+<div class="gallery-item">
+<img src="Thumbnails 01.jpg">
+<div class="overlay">YouTube Thumbnails</div>
+</div>
+</div>
 </section>
 
 <!-- VIDEO MODAL -->
 <div id="videoModal" class="modal" onclick="closeModal(event)">
-
 <div class="modal-content" style="grid-template-columns:repeat(2,1fr)">
 <iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
 <iframe src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
@@ -276,14 +202,12 @@ and cohesive social media assets that turn viewers into followers.
 
 <div class="modal-footer">
 <hr>
-<h3>Let's get in touch</h3>
+<h3>Let’s get in touch</h3>
 </div>
-
 </div>
 
 <!-- IMAGE MODAL -->
 <div id="imageModal" class="modal" onclick="closeModal(event)">
-
 <div class="modal-content">
 
 <img src="FBB 01 .jpg" onclick="preview(this.src)">
@@ -303,60 +227,70 @@ and cohesive social media assets that turn viewers into followers.
 
 <div class="modal-footer">
 <hr>
-<h3>Let's get in touch</h3>
+<h3>Let’s get in touch</h3>
 </div>
-
 </div>
 
 <!-- PREVIEW -->
 <div id="preview" class="preview">
-<span id="prevBtn" class="nav-btn">❮</span>
+<span id="prevBtn" class="arrow">❮</span>
 <img id="previewImg">
-<span id="nextBtn" class="nav-btn">❯</span>
+<span id="nextBtn" class="arrow">❯</span>
 </div>
 
+<!-- ABOUT -->
+<section id="about" class="section">
+<h2>About Me</h2>
+<h3>Hi, I'm Waseem</h3>
+<p>I turn passive scrollers into <span style="color:#FF6B35">active followers</span></p>
+<p>Based in Croydon, London...</p>
+<img src="My Image.jpeg" style="width:150px;border-radius:50%">
+</section>
+
 <script>
-let images=[];
-let currentIndex=0;
+let images=[], currentIndex=0;
 
 function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
+function openVideos(){document.getElementById('videoModal').style.display='block'}
 function openImages(){
 document.getElementById('imageModal').style.display='block';
-images=[...document.querySelectorAll('#imageModal img')].map(img=>img.src);
-}
-
-function openVideos(){
-document.getElementById('videoModal').style.display='block';
+images=[...document.querySelectorAll('#imageModal img')].map(i=>i.src)
 }
 
 function closeModal(e){
-if(e.target!==e.currentTarget)return;
-e.currentTarget.style.display='none';
+if(e.target===e.currentTarget)e.currentTarget.style.display='none'
 }
 
 function preview(src){
 document.getElementById('preview').style.display='flex';
 document.getElementById('previewImg').src=src;
-currentIndex=images.indexOf(src);
+currentIndex=images.indexOf(src)
 }
 
-document.getElementById('preview').onclick=function(e){
-if(e.target.id==='previewImg'||e.target.id==='nextBtn'||e.target.id==='prevBtn')return;
-this.style.display='none';
-};
-
-document.getElementById('nextBtn').onclick=function(){
+document.getElementById('nextBtn').onclick=()=>{
 currentIndex=(currentIndex+1)%images.length;
-document.getElementById('previewImg').src=images[currentIndex];
-};
+document.getElementById('previewImg').src=images[currentIndex]
+}
 
-document.getElementById('prevBtn').onclick=function(){
+document.getElementById('prevBtn').onclick=()=>{
 currentIndex=(currentIndex-1+images.length)%images.length;
-document.getElementById('previewImg').src=images[currentIndex];
-};
+document.getElementById('previewImg').src=images[currentIndex]
+}
+
+document.getElementById('preview').onclick=e=>{
+if(e.target.id==="preview") e.currentTarget.style.display='none'
+}
+
+document.addEventListener('keydown',e=>{
+if(e.key==="Escape"){
+document.getElementById('preview').style.display='none'
+document.getElementById('videoModal').style.display='none'
+document.getElementById('imageModal').style.display='none'
+}
+});
 </script>
 
 </body>
