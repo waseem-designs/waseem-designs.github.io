@@ -26,18 +26,12 @@ cursor:pointer;font-weight:600;transition:.3s
 }
 .btn:hover{transform:translateY(-3px)}
 .btn-blue{background:#0077FF;color:#fff}
-.btn-white{background:#fff;color:#222;border:1px solid #ddd}
+.btn-white{background:#fff;border:1px solid #ddd}
 
 /* SECTIONS */
-.section{
-padding:80px 20px;text-align:center;
-opacity:0;transform:translateY(40px);
-transition:1s
-}
-.section.show{opacity:1;transform:translateY(0)}
-
-.hero h2{font-size:72px;line-height:1.2}
-.hero p{max-width:750px;margin:25px auto;font-size:18px}
+.section{padding:80px 20px;text-align:center}
+.hero h2{font-size:64px;line-height:1.2}
+.hero p{max-width:750px;margin:25px auto}
 
 /* BANNER */
 .banner{
@@ -59,27 +53,20 @@ position:relative;cursor:pointer;border-radius:12px;overflow:hidden
 }
 
 .gallery img{
-width:100%;border-radius:12px;
-transition:.4s
+width:100%;border-radius:12px;transition:.3s
 }
-.gallery img:hover{transform:scale(1.08)}
+.gallery img:hover{transform:scale(1.05)}
 
 .overlay{
 position:absolute;bottom:0;width:100%;
 background:rgba(0,0,0,.6);color:#fff;
-padding:12px;font-weight:600
+padding:10px;font-weight:600
 }
 
 /* MODALS */
 .modal{
 display:none;position:fixed;top:0;left:0;width:100%;height:100%;
-background:#fff;z-index:3000;overflow-y:auto;padding:60px 20px;
-animation:fadeIn .4s ease
-}
-
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
+background:#fff;z-index:3000;overflow-y:auto;padding:60px 20px
 }
 
 .modal-content{
@@ -90,10 +77,10 @@ gap:25px;max-width:1100px;margin:auto
 
 .modal iframe{width:100%;height:220px;border-radius:10px}
 
-/* FOOTER LINE */
+/* FOOTER */
 .modal-footer{text-align:center;margin-top:40px}
 
-/* IMAGE PREVIEW */
+/* PREVIEW */
 .preview{
 display:none;position:fixed;top:0;left:0;width:100%;height:100%;
 background:rgba(0,0,0,.9);justify-content:center;align-items:center;
@@ -103,19 +90,22 @@ z-index:4000
 .preview img{max-width:90%;max-height:90vh}
 
 .arrow{
-position:absolute;color:#fff;font-size:50px;
-cursor:pointer
+position:absolute;color:#fff;font-size:50px;cursor:pointer
 }
 #prevBtn{left:30px}
 #nextBtn{right:30px}
 
 /* FORM */
 .form-box{
-max-width:400px;margin:auto;
-display:flex;flex-direction:column;gap:15px
+max-width:400px;margin:auto;display:flex;flex-direction:column;gap:15px
 }
 .form-box input,.form-box textarea{
 padding:12px;border-radius:8px;border:1px solid #ddd
+}
+
+/* ABOUT */
+.about img{
+width:150px;border-radius:50%;margin-top:20px
 }
 </style>
 </head>
@@ -167,24 +157,17 @@ Book Consultation
 <div class="gallery">
 <div>
 <h3>Social Media Design</h3>
-<p>Visual storytelling that aligns with your brand identity.
-I create assets that stop the scroll</p>
-<p>✔ Instagram Posts & Carousels</p>
-<p>✔ Facebook & LinkedIn Banners</p>
+<p>Visual storytelling that aligns with your brand identity. I create assets that stop the scroll</p>
 </div>
 
 <div>
-<h3>Video Production <span style="background:#FF6B35;color:#fff;padding:4px 10px;border-radius:10px;font-size:12px">Most Popular</span></h3>
+<h3>Video Production</h3>
 <p>Dynamic video editing and thumbnail design specially optimised for algorithm performance</p>
-<p>✔ Short-Form (Reels, TikTok, Shorts)</p>
-<p>✔ High CTR YouTube Thumbnails</p>
 </div>
 
 <div>
 <h3>Account Management</h3>
 <p>End-to-end management of your social presence, allowing you to focus on your business</p>
-<p>✔ Content Scheduling & Strategy</p>
-<p>✔ Growth Analytics Reporting</p>
 </div>
 </div>
 </section>
@@ -211,21 +194,20 @@ I create assets that stop the scroll</p>
 </div>
 </section>
 
-<!-- FORM MODAL -->
+<!-- FORM -->
 <div id="formModal" class="modal" onclick="closeModal(event)">
 <div class="form-box">
 <h2>Book Consultation</h2>
-<input type="text" placeholder="Your Name">
-<input type="email" placeholder="Your Email">
-<textarea placeholder="Your Message"></textarea>
-
+<input placeholder="Name">
+<input placeholder="Email">
+<textarea placeholder="Message"></textarea>
 <a href="mailto:mandh.studios25@gmail.com">
-<button class="btn btn-blue">Send Request</button>
+<button class="btn btn-blue">Send</button>
 </a>
 </div>
 </div>
 
-<!-- VIDEO MODAL -->
+<!-- VIDEO -->
 <div id="videoModal" class="modal" onclick="closeModal(event)">
 <div class="modal-content" style="grid-template-columns:repeat(2,1fr)">
 <iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
@@ -240,7 +222,7 @@ I create assets that stop the scroll</p>
 <div class="modal-footer"><hr><h3>Let’s get in touch</h3></div>
 </div>
 
-<!-- IMAGE MODAL -->
+<!-- IMAGES -->
 <div id="imageModal" class="modal" onclick="closeModal(event)">
 <div class="modal-content">
 <img src="FBB 01 .jpg" onclick="preview(this.src)">
@@ -263,4 +245,62 @@ I create assets that stop the scroll</p>
 <div id="preview" class="preview">
 <span id="prevBtn" class="arrow">❮</span>
 <img id="previewImg">
-<span id="nextBtn" class="arrow
+<span id="nextBtn" class="arrow">❯</span>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section about">
+<button class="btn btn-white">About Me</button>
+<h2>Hi, I'm Waseem</h2>
+<p>I turn passive scrollers into <span style="color:#FF6B35">active followers</span></p>
+<p>Based in Croydon, London...</p>
+<img src="My Image.jpeg">
+</section>
+
+<script>
+let images=[],currentIndex=0;
+
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+function openForm(){document.getElementById('formModal').style.display='block'}
+function openVideos(){document.getElementById('videoModal').style.display='block'}
+function openImages(){
+document.getElementById('imageModal').style.display='block';
+images=[...document.querySelectorAll('#imageModal img')].map(i=>i.src)
+}
+
+function closeModal(e){
+if(e.target===e.currentTarget)e.currentTarget.style.display='none'
+}
+
+function preview(src){
+document.getElementById('preview').style.display='flex';
+document.getElementById('previewImg').src=src;
+currentIndex=images.indexOf(src)
+}
+
+document.getElementById('nextBtn').onclick=()=>{
+currentIndex=(currentIndex+1)%images.length;
+document.getElementById('previewImg').src=images[currentIndex]
+}
+
+document.getElementById('prevBtn').onclick=()=>{
+currentIndex=(currentIndex-1+images.length)%images.length;
+document.getElementById('previewImg').src=images[currentIndex]
+}
+
+document.getElementById('preview').onclick=e=>{
+if(e.target.id==="preview") e.currentTarget.style.display='none'
+}
+
+document.addEventListener('keydown',e=>{
+if(e.key==="Escape"){
+document.querySelectorAll('.modal,.preview').forEach(el=>el.style.display='none')
+}
+});
+</script>
+
+</body>
+</html>
