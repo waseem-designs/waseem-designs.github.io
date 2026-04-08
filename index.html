@@ -19,15 +19,27 @@ z-index:2000;box-shadow:0 2px 10px rgba(0,0,0,.05)
 header h1{color:#0077FF}
 nav a{margin:0 12px;text-decoration:none;color:#222;font-weight:500}
 
-.btn{padding:12px 22px;border-radius:25px;border:none;cursor:pointer;font-weight:600}
+/* BUTTONS */
+.btn{
+padding:12px 22px;border-radius:25px;border:none;
+cursor:pointer;font-weight:600;transition:.3s
+}
+.btn:hover{transform:translateY(-3px)}
 .btn-blue{background:#0077FF;color:#fff}
 .btn-white{background:#fff;color:#222;border:1px solid #ddd}
 
 /* SECTIONS */
-.section{padding:80px 20px;text-align:center}
+.section{
+padding:80px 20px;text-align:center;
+opacity:0;transform:translateY(40px);
+transition:1s
+}
+.section.show{opacity:1;transform:translateY(0)}
+
 .hero h2{font-size:72px;line-height:1.2}
 .hero p{max-width:750px;margin:25px auto;font-size:18px}
 
+/* BANNER */
 .banner{
 width:100%;height:320px;
 background:url('Banner.png') center/cover no-repeat;
@@ -47,10 +59,10 @@ position:relative;cursor:pointer;border-radius:12px;overflow:hidden
 }
 
 .gallery img{
-width:100%;display:block;border-radius:12px;
-transition:.3s
+width:100%;border-radius:12px;
+transition:.4s
 }
-.gallery img:hover{transform:scale(1.05)}
+.gallery img:hover{transform:scale(1.08)}
 
 .overlay{
 position:absolute;bottom:0;width:100%;
@@ -61,7 +73,13 @@ padding:12px;font-weight:600
 /* MODALS */
 .modal{
 display:none;position:fixed;top:0;left:0;width:100%;height:100%;
-background:#fff;z-index:3000;overflow-y:auto;padding:60px 20px
+background:#fff;z-index:3000;overflow-y:auto;padding:60px 20px;
+animation:fadeIn .4s ease
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
 }
 
 .modal-content{
@@ -70,10 +88,9 @@ grid-template-columns:repeat(3,1fr);
 gap:25px;max-width:1100px;margin:auto
 }
 
-.modal iframe{
-width:100%;height:220px;border-radius:10px
-}
+.modal iframe{width:100%;height:220px;border-radius:10px}
 
+/* FOOTER LINE */
 .modal-footer{text-align:center;margin-top:40px}
 
 /* IMAGE PREVIEW */
@@ -83,16 +100,23 @@ background:rgba(0,0,0,.9);justify-content:center;align-items:center;
 z-index:4000
 }
 
-.preview img{
-max-width:90%;max-height:90vh
-}
+.preview img{max-width:90%;max-height:90vh}
 
 .arrow{
 position:absolute;color:#fff;font-size:50px;
-cursor:pointer;user-select:none
+cursor:pointer
 }
 #prevBtn{left:30px}
 #nextBtn{right:30px}
+
+/* FORM */
+.form-box{
+max-width:400px;margin:auto;
+display:flex;flex-direction:column;gap:15px
+}
+.form-box input,.form-box textarea{
+padding:12px;border-radius:8px;border:1px solid #ddd
+}
 </style>
 </head>
 
@@ -128,7 +152,7 @@ that turn viewers into followers.
 View Full Portfolio
 </button>
 
-<button class="btn btn-white" onclick="scrollToSection('contact')">
+<button class="btn btn-white" onclick="openForm()">
 Book Consultation
 </button>
 
@@ -187,6 +211,20 @@ I create assets that stop the scroll</p>
 </div>
 </section>
 
+<!-- FORM MODAL -->
+<div id="formModal" class="modal" onclick="closeModal(event)">
+<div class="form-box">
+<h2>Book Consultation</h2>
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea placeholder="Your Message"></textarea>
+
+<a href="mailto:mandh.studios25@gmail.com">
+<button class="btn btn-blue">Send Request</button>
+</a>
+</div>
+</div>
+
 <!-- VIDEO MODAL -->
 <div id="videoModal" class="modal" onclick="closeModal(event)">
 <div class="modal-content" style="grid-template-columns:repeat(2,1fr)">
@@ -199,17 +237,12 @@ I create assets that stop the scroll</p>
 <iframe src="https://www.youtube.com/embed/35iKyyiYhtw"></iframe>
 <iframe src="https://www.youtube.com/embed/aAD5Paf2DV4"></iframe>
 </div>
-
-<div class="modal-footer">
-<hr>
-<h3>Let’s get in touch</h3>
-</div>
+<div class="modal-footer"><hr><h3>Let’s get in touch</h3></div>
 </div>
 
 <!-- IMAGE MODAL -->
 <div id="imageModal" class="modal" onclick="closeModal(event)">
 <div class="modal-content">
-
 <img src="FBB 01 .jpg" onclick="preview(this.src)">
 <img src="FBB 02.png" onclick="preview(this.src)">
 <img src="GRID SMP 01.jpg" onclick="preview(this.src)">
@@ -222,76 +255,12 @@ I create assets that stop the scroll</p>
 <img src="Youtube Banners 01.jpg" onclick="preview(this.src)">
 <img src="Youtube Banners 02.jpg" onclick="preview(this.src)">
 <img src="Youtube Banners 03.jpg" onclick="preview(this.src)">
-
 </div>
-
-<div class="modal-footer">
-<hr>
-<h3>Let’s get in touch</h3>
-</div>
+<div class="modal-footer"><hr><h3>Let’s get in touch</h3></div>
 </div>
 
 <!-- PREVIEW -->
 <div id="preview" class="preview">
 <span id="prevBtn" class="arrow">❮</span>
 <img id="previewImg">
-<span id="nextBtn" class="arrow">❯</span>
-</div>
-
-<!-- ABOUT -->
-<section id="about" class="section">
-<h2>About Me</h2>
-<h3>Hi, I'm Waseem</h3>
-<p>I turn passive scrollers into <span style="color:#FF6B35">active followers</span></p>
-<p>Based in Croydon, London...</p>
-<img src="My Image.jpeg" style="width:150px;border-radius:50%">
-</section>
-
-<script>
-let images=[], currentIndex=0;
-
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-
-function openVideos(){document.getElementById('videoModal').style.display='block'}
-function openImages(){
-document.getElementById('imageModal').style.display='block';
-images=[...document.querySelectorAll('#imageModal img')].map(i=>i.src)
-}
-
-function closeModal(e){
-if(e.target===e.currentTarget)e.currentTarget.style.display='none'
-}
-
-function preview(src){
-document.getElementById('preview').style.display='flex';
-document.getElementById('previewImg').src=src;
-currentIndex=images.indexOf(src)
-}
-
-document.getElementById('nextBtn').onclick=()=>{
-currentIndex=(currentIndex+1)%images.length;
-document.getElementById('previewImg').src=images[currentIndex]
-}
-
-document.getElementById('prevBtn').onclick=()=>{
-currentIndex=(currentIndex-1+images.length)%images.length;
-document.getElementById('previewImg').src=images[currentIndex]
-}
-
-document.getElementById('preview').onclick=e=>{
-if(e.target.id==="preview") e.currentTarget.style.display='none'
-}
-
-document.addEventListener('keydown',e=>{
-if(e.key==="Escape"){
-document.getElementById('preview').style.display='none'
-document.getElementById('videoModal').style.display='none'
-document.getElementById('imageModal').style.display='none'
-}
-});
-</script>
-
-</body>
-</html>
+<span id="nextBtn" class="arrow
