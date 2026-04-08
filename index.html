@@ -8,143 +8,76 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
 --blue:#0077FF;
 --orange:#FF6B35;
---white:#FFFFFF;
---dark:#222222;
+--white:#fff;
+--dark:#222;
 }
-
-*{margin:0;padding:0;box-sizing:border-box}
 
 body{
 font-family:Poppins,sans-serif;
-background:var(--white);
-color:var(--dark);
-scroll-behavior:smooth;
+margin:0;
+background:#fff;
+color:#222;
 }
 
 /* HEADER */
 header{
 display:flex;
 justify-content:space-between;
-padding:18px 40px;
+padding:15px 30px;
 background:#fff;
 position:sticky;
 top:0;
 z-index:2000;
-box-shadow:0 4px 20px rgba(0,0,0,.05);
-backdrop-filter:blur(10px);
+box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
 
 header h1{color:var(--blue)}
 
 nav a{
-margin:0 15px;
+margin:0 12px;
 text-decoration:none;
-color:var(--dark);
-font-weight:500;
-transition:.3s;
+color:#222;
 }
-
-nav a:hover{color:var(--blue)}
 
 /* BUTTONS */
 .btn{
-padding:12px 24px;
-border-radius:30px;
+padding:12px 22px;
+border-radius:25px;
 cursor:pointer;
 border:none;
 font-weight:600;
-transition:.3s;
+margin:5px;
 }
 
-.btn-blue{
-background:var(--blue);
-color:#fff;
-}
-
-.btn-blue:hover{
-transform:translateY(-3px);
-box-shadow:0 10px 25px rgba(0,119,255,.3);
-}
-
-.btn-white{
-background:#fff;
-border:1px solid #ddd;
-}
-
-.btn-white:hover{
-transform:translateY(-3px);
-box-shadow:0 10px 25px rgba(0,0,0,.1);
-}
-
-/* SECTIONS */
-.section{
-padding:100px 20px;
-text-align:center;
-}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-white{background:#fff;border:1px solid #ddd}
 
 /* HERO */
+.section{padding:80px 20px;text-align:center}
+
 .hero h2{
 font-size:72px;
 line-height:1.1;
 }
 
-.hero span{color:var(--blue)}
-
 .hero p{
 max-width:750px;
-margin:25px auto;
-font-size:18px;
-color:#555;
+margin:20px auto;
 }
 
 .banner{
 width:100%;
 height:350px;
 background:url('Banner.png') center/cover no-repeat;
-margin-top:50px;
-border-radius:20px;
+margin-top:40px;
+border-radius:15px;
 }
 
 /* SERVICES */
-.services-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:30px;
-max-width:1100px;
-margin:50px auto;
-}
-
-.service-card{
-background:#fff;
-padding:30px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.05);
-transition:.4s;
-text-align:left;
-}
-
-.service-card:hover{
-transform:translateY(-8px);
-box-shadow:0 20px 50px rgba(0,0,0,.1);
-}
-
-.service-card h3{margin-bottom:10px}
-
-.tag{
-background:var(--orange);
-color:#fff;
-padding:4px 10px;
-border-radius:8px;
-font-size:12px;
-margin-left:10px;
-}
-
-/* GALLERY */
-.gallery{
+.services{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:25px;
@@ -152,23 +85,27 @@ max-width:1100px;
 margin:40px auto;
 }
 
-.gallery-item{
-border-radius:15px;
-overflow:hidden;
-cursor:pointer;
-transition:.3s;
+.card{
 background:#fff;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+text-align:left;
 }
 
-.gallery-item:hover{
-transform:translateY(-5px) scale(1.02);
+/* GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+max-width:1100px;
+margin:40px auto;
 }
 
-.gallery img{width:100%}
-
-.overlay{
-padding:10px;
-font-weight:500;
+.gallery img{
+width:100%;
+border-radius:10px;
+cursor:pointer;
 }
 
 /* MODALS */
@@ -183,32 +120,30 @@ background:#fff;
 z-index:3000;
 overflow-y:auto;
 padding:60px 20px;
-animation:fadeIn .4s ease;
-}
-
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
 }
 
 .modal-content{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:25px;
+gap:20px;
 max-width:1100px;
 margin:auto;
-}
-
-.modal img{
-width:100%;
-border-radius:12px;
-cursor:pointer;
 }
 
 .modal iframe{
 width:100%;
 height:220px;
-border-radius:12px;
+border-radius:10px;
+}
+
+.modal-footer{
+text-align:center;
+margin:60px auto;
+max-width:1100px;
+}
+
+.modal-footer hr{
+margin-bottom:20px;
 }
 
 /* PREVIEW */
@@ -241,21 +176,6 @@ cursor:pointer;
 #prevBtn{left:20px}
 #nextBtn{right:20px}
 
-/* ABOUT */
-.about img{
-width:180px;
-border-radius:50%;
-margin-top:20px;
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-.gallery,.services-grid,.modal-content{
-grid-template-columns:1fr;
-}
-.hero h2{font-size:42px}
-}
-
 </style>
 </head>
 
@@ -278,7 +198,7 @@ grid-template-columns:1fr;
 
 <h2>
 Elevating Brands with<br>
-<span>Strategic</span> Social Media<br>
+<span style="color:#0077FF">Strategic</span> Social Media<br>
 Design
 </h2>
 
@@ -287,7 +207,8 @@ I specialize in creating high-converting YouTube thumbnails, engaging short-form
 and cohesive social media assets that turn viewers into followers.
 </p>
 
-<button class="btn btn-blue" onclick="openImages()">View Portfolio</button>
+<button class="btn btn-blue" onclick="openImages()">View Full Portfolio</button>
+<button class="btn btn-white" onclick="scrollToSection('contact')">Book Consultation</button>
 
 <div class="banner"></div>
 
@@ -299,27 +220,27 @@ and cohesive social media assets that turn viewers into followers.
 <h2>Core Expertise</h2>
 <p>Helping brands grow with high-impact design and video</p>
 
-<div class="services-grid">
+<div class="services">
 
-<div class="service-card">
+<div class="card">
 <h3>Social Media Design</h3>
-<p>Visual storytelling that aligns with your brand identity.</p>
+<p>Visual storytelling that aligns with your brand identity. I create assets that stop the scroll</p>
 <p>✔ Instagram Posts & Carousels</p>
 <p>✔ Facebook & LinkedIn Banners</p>
 </div>
 
-<div class="service-card">
-<h3>Video Production <span class="tag">Most Popular</span></h3>
-<p>Dynamic video editing & thumbnail design optimized for performance.</p>
-<p>✔ Short-form content</p>
-<p>✔ High CTR thumbnails</p>
+<div class="card">
+<h3>Video Production <span style="color:#fff;background:#FF6B35;padding:3px 8px;border-radius:8px;font-size:12px;">Most Popular</span></h3>
+<p>Dynamic video editing and thumbnail design specially optimised for algorithm performance</p>
+<p>✔ Short-Form (Reels, TikTok, Shorts)</p>
+<p>✔ High CTR YouTube Thumbnails</p>
 </div>
 
-<div class="service-card">
+<div class="card">
 <h3>Account Management</h3>
-<p>End-to-end management of your social presence.</p>
-<p>✔ Strategy & scheduling</p>
-<p>✔ Growth analytics</p>
+<p>End-to-end management of your social presence, allowing you to focus on your business</p>
+<p>✔ Content Scheduling & Strategy</p>
+<p>✔ Growth Analytics Reporting</p>
 </div>
 
 </div>
@@ -332,30 +253,38 @@ and cohesive social media assets that turn viewers into followers.
 <h2>Recent Creative Work</h2>
 
 <div class="gallery">
-
-<div class="gallery-item" onclick="openVideos()">
-<img src="Videos Thumbnail.PNG">
-<div class="overlay">Video Ads & Marketing</div>
-</div>
-
-<div class="gallery-item" onclick="openImages()">
-<img src="Immage gallery.png">
-<div class="overlay">Explore All Work</div>
-</div>
-
-<div class="gallery-item">
+<img src="Videos Thumbnail.PNG" onclick="openVideos()">
+<img src="Immage gallery.png" onclick="openImages()">
 <img src="LIB 01.jpg">
-<div class="overlay">Lifestyle Branding</div>
-</div>
-
 </div>
 
 </section>
 
-<!-- IMAGE MODAL -->
-<div id="imageModal" class="modal">
+<!-- VIDEO MODAL -->
+<div id="videoModal" class="modal" onclick="closeModal(event)">
 
-<div class="modal-content" onclick="event.stopPropagation()">
+<div class="modal-content" style="grid-template-columns:repeat(2,1fr)">
+<iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
+<iframe src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
+<iframe src="https://www.youtube.com/embed/07O40xrZhcg"></iframe>
+<iframe src="https://www.youtube.com/embed/hh1J-vUrCSE"></iframe>
+<iframe src="https://www.youtube.com/embed/8DcwOoXqnf8"></iframe>
+<iframe src="https://www.youtube.com/embed/QesPdSOCHp0"></iframe>
+<iframe src="https://www.youtube.com/embed/35iKyyiYhtw"></iframe>
+<iframe src="https://www.youtube.com/embed/aAD5Paf2DV4"></iframe>
+</div>
+
+<div class="modal-footer">
+<hr>
+<h3>Let's get in touch</h3>
+</div>
+
+</div>
+
+<!-- IMAGE MODAL -->
+<div id="imageModal" class="modal" onclick="closeModal(event)">
+
+<div class="modal-content">
 
 <img src="FBB 01 .jpg" onclick="preview(this.src)">
 <img src="FBB 02.png" onclick="preview(this.src)">
@@ -372,64 +301,40 @@ and cohesive social media assets that turn viewers into followers.
 
 </div>
 
-</div>
-
-<!-- VIDEO MODAL -->
-<div id="videoModal" class="modal" onclick="this.style.display='none'">
-
-<div class="modal-content" style="grid-template-columns:repeat(2,1fr)">
-
-<iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
-<iframe src="https://www.youtube.com/embed/07O40xrZhcg"></iframe>
-
+<div class="modal-footer">
+<hr>
+<h3>Let's get in touch</h3>
 </div>
 
 </div>
 
 <!-- PREVIEW -->
 <div id="preview" class="preview">
-
 <span id="prevBtn" class="nav-btn">❮</span>
 <img id="previewImg">
 <span id="nextBtn" class="nav-btn">❯</span>
-
 </div>
 
-<!-- ABOUT -->
-<section id="about" class="section about">
-
-<h2>About Me</h2>
-
-<h3>
-Hi, I'm Waseem<br>
-I turn passive scrollers into <span style="color:#FF6B35">active followers</span>
-</h3>
-
-<p>
-Based in Croydon, London, I help brands grow through creative content.
-</p>
-
-<img src="My Image.jpeg">
-
-</section>
-
 <script>
-
 let images=[];
 let currentIndex=0;
 
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
 function openImages(){
-const modal=document.getElementById('imageModal');
-modal.style.display='block';
-images=[...modal.querySelectorAll('img')].map(i=>i.src);
+document.getElementById('imageModal').style.display='block';
+images=[...document.querySelectorAll('#imageModal img')].map(img=>img.src);
 }
 
 function openVideos(){
 document.getElementById('videoModal').style.display='block';
 }
 
-document.getElementById('imageModal').onclick=function(e){
-if(!e.target.closest('.modal-content')) this.style.display='none';
+function closeModal(e){
+if(e.target!==e.currentTarget)return;
+e.currentTarget.style.display='none';
 }
 
 function preview(src){
@@ -439,20 +344,19 @@ currentIndex=images.indexOf(src);
 }
 
 document.getElementById('preview').onclick=function(e){
-if(e.target.id==='previewImg'||e.target.id==='prevBtn'||e.target.id==='nextBtn')return;
+if(e.target.id==='previewImg'||e.target.id==='nextBtn'||e.target.id==='prevBtn')return;
 this.style.display='none';
-}
+};
 
 document.getElementById('nextBtn').onclick=function(){
 currentIndex=(currentIndex+1)%images.length;
-preview(images[currentIndex]);
-}
+document.getElementById('previewImg').src=images[currentIndex];
+};
 
 document.getElementById('prevBtn').onclick=function(){
 currentIndex=(currentIndex-1+images.length)%images.length;
-preview(images[currentIndex]);
-}
-
+document.getElementById('previewImg').src=images[currentIndex];
+};
 </script>
 
 </body>
