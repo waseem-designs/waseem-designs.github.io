@@ -9,55 +9,42 @@
 
 <style>
 body{font-family:Poppins,sans-serif;margin:0;background:#ffffff;color:#222}
-
-/* NAV */
 header{display:flex;justify-content:space-between;padding:15px 30px;background:#fff;position:sticky;top:0;z-index:999}
 nav a{margin:0 12px;text-decoration:none;color:#222;font-weight:500}
 
-/* BUTTONS */
 .btn{padding:12px 22px;border-radius:25px;border:none;cursor:pointer}
 .btn-blue{background:#0077FF;color:#fff}
 .btn-white{background:#fff;border:1px solid #ccc}
 
-/* SECTIONS */
 .section{padding:80px 20px;text-align:center}
 .hero h2{font-size:64px;line-height:1.2}
 .hero p{max-width:700px;margin:auto}
 
-/* BANNER */
 .banner{height:300px;background:url('Banner.png') center/cover;margin-top:30px}
 
-/* SERVICES */
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:auto}
 .box{background:#fff;padding:25px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.08);text-align:left}
 
-/* PORTFOLIO */
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:auto}
 .gallery-item{position:relative;cursor:pointer}
 .gallery img{width:100%;border-radius:12px}
 .overlay{position:absolute;bottom:0;background:rgba(0,0,0,.6);color:#fff;width:100%;padding:10px;border-radius:0 0 12px 12px}
 
-/* MODALS */
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;overflow:auto;z-index:2000}
 .modal-content{max-width:1100px;margin:auto;padding:40px}
 
-/* VIDEO GRID */
 .video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 
-/* IMAGE GRID */
 .image-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .image-grid img{width:100%;cursor:pointer;border-radius:10px}
 
-/* PREVIEW */
 .preview{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;justify-content:center;align-items:center;z-index:3000}
 .preview img{max-width:90%;max-height:90vh}
 .arrow{position:absolute;font-size:50px;color:#fff;cursor:pointer}
 .left{left:20px}.right{right:20px}
 
-/* FORM */
 form{display:grid;gap:10px;max-width:400px;margin:auto}
 input,textarea{padding:10px;border:1px solid #ccc;border-radius:8px}
-
 </style>
 </head>
 
@@ -73,17 +60,10 @@ input,textarea{padding:10px;border:1px solid #ccc;border-radius:8px}
 </nav>
 </header>
 
-<!-- HOME -->
 <section id="home" class="section hero">
-<h2>
-Elevating Brands With<br>
-<span style="color:#0077FF">Strategic Social Media</span><br>
-Design
-</h2>
+<h2>Elevating Brands With<br><span style="color:#0077FF">Strategic Social Media</span><br>Design</h2>
 
-<p>
-I specialize in creating high-converting YouTube thumbnails, engaging short-form videos, and cohesive social media assets that turn viewers into followers.
-</p>
+<p>I specialize in creating high-converting YouTube thumbnails, engaging short-form videos, and cohesive social media assets that turn viewers into followers.</p>
 
 <button class="btn btn-blue" onclick="scrollToSection('portfolio')">View Full Portfolio</button>
 <button class="btn btn-white" onclick="openForm()">Book Consultation</button>
@@ -91,12 +71,10 @@ I specialize in creating high-converting YouTube thumbnails, engaging short-form
 <div class="banner"></div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="section">
 <h2>Core Expertise</h2>
 
 <div class="services">
-
 <div class="box">
 <h3>Social Media Design</h3>
 <p>Visual storytelling that aligns with your brand identity. I create assets that stop the scroll.</p>
@@ -105,9 +83,7 @@ I specialize in creating high-converting YouTube thumbnails, engaging short-form
 </div>
 
 <div class="box">
-<h3>Video Production 
-<span style="background:#FF6B35;color:#fff;padding:5px 10px;border-radius:8px;font-size:12px">Most Popular</span>
-</h3>
+<h3>Video Production <span style="background:#FF6B35;color:#fff;padding:5px 10px;border-radius:8px;font-size:12px">Most Popular</span></h3>
 <p>Dynamic video editing and thumbnails optimised for performance.</p>
 <p>✔ Short-form (Reels, TikTok)</p>
 <p>✔ High CTR YouTube Thumbnails</p>
@@ -119,16 +95,13 @@ I specialize in creating high-converting YouTube thumbnails, engaging short-form
 <p>✔ Content Scheduling</p>
 <p>✔ Growth Analytics</p>
 </div>
-
 </div>
 </section>
 
-<!-- PORTFOLIO -->
 <section id="portfolio" class="section">
 <h2>Recent Creative Work</h2>
 
 <div class="gallery">
-
 <div class="gallery-item" onclick="openVideos()">
 <img src="Videos Thumbnail.PNG">
 <div class="overlay">Video Ads & Marketing</div>
@@ -148,12 +121,11 @@ I specialize in creating high-converting YouTube thumbnails, engaging short-form
 <img src="Thumbnails 03.png">
 <div class="overlay">Business Thumbnails</div>
 </div>
-
 </div>
 </section>
 
 <!-- VIDEO MODAL -->
-<div id="videoModal" class="modal">
+<div id="videoModal" class="modal" onclick="closeModal(event)">
 <div class="modal-content video-grid">
 
 <iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
@@ -166,13 +138,13 @@ I specialize in creating high-converting YouTube thumbnails, engaging short-form
 <iframe src="https://www.youtube.com/embed/aAD5Paf2DV4"></iframe>
 
 <hr style="grid-column:1/-1;margin-top:40px">
-<h3 style="grid-column:1/-1;text-align:center">Let's get in touch</h3>
+<h3 style="grid-column:1/-1;text-align:center">Let’s keep in touch</h3>
 
 </div>
 </div>
 
 <!-- IMAGE MODAL -->
-<div id="imageModal" class="modal">
+<div id="imageModal" class="modal" onclick="closeModal(event)">
 <div class="modal-content image-grid">
 
 <img src="FBB 01 .jpg" onclick="preview(this.src)">
@@ -189,7 +161,7 @@ I specialize in creating high-converting YouTube thumbnails, engaging short-form
 <img src="Youtube Banners 03.jpg" onclick="preview(this.src)">
 
 <hr style="grid-column:1/-1;margin-top:40px">
-<h3 style="grid-column:1/-1;text-align:center">Let's get in touch</h3>
+<h3 style="grid-column:1/-1;text-align:center">Let’s keep in touch</h3>
 
 </div>
 </div>
@@ -202,7 +174,7 @@ I specialize in creating high-converting YouTube thumbnails, engaging short-form
 </div>
 
 <!-- FORM -->
-<div id="formModal" class="modal">
+<div id="formModal" class="modal" onclick="closeModal(event)">
 <div class="modal-content">
 <h2>Book Consultation</h2>
 <form>
@@ -214,7 +186,6 @@ I specialize in creating high-converting YouTube thumbnails, engaging short-form
 </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about" class="section">
 <button class="btn btn-white">About Me</button>
 
@@ -223,9 +194,7 @@ Hi, I'm Waseem<br>
 I turn passive scrollers into <span style="color:#FF6B35">active followers</span>
 </h2>
 
-<p>
-Based in Croydon, London, I help brands grow through digital content.
-</p>
+<p>Based in Croydon, London, I help brands grow through digital content.</p>
 
 <img src="My Image.jpg" width="150" style="border-radius:50%">
 </section>
@@ -246,6 +215,12 @@ images=[...document.querySelectorAll('#imageModal img')].map(i=>i.src);
 
 function openForm(){
 document.getElementById('formModal').style.display='block';
+}
+
+function closeModal(e){
+if(e.target.classList.contains('modal')){
+e.target.style.display='none';
+}
 }
 
 let images=[],index=0;
