@@ -31,7 +31,15 @@ nav a{margin:0 12px;text-decoration:none;color:#222;font-weight:500}
 .overlay{position:absolute;bottom:0;background:rgba(0,0,0,.6);color:#fff;width:100%;padding:10px;border-radius:0 0 12px 12px}
 
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;overflow:auto;z-index:2000}
-.modal-content{max-width:1100px;margin:auto;padding:40px}
+.modal-content{max-width:1100px;margin:auto;padding:40px;position:relative}
+
+.close-btn{
+position:absolute;
+top:10px;
+right:20px;
+font-size:28px;
+cursor:pointer;
+}
 
 .video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .image-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -121,8 +129,9 @@ nav a{margin:0 12px;text-decoration:none;color:#222;font-weight:500}
 </section>
 
 <!-- VIDEO MODAL -->
-<div id="videoModal" class="modal" onclick="closeModal(event)">
+<div id="videoModal" class="modal">
 <div class="modal-content video-grid">
+<span class="close-btn" onclick="closeVideos()">✕</span>
 
 <iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
 <iframe src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
@@ -142,8 +151,9 @@ nav a{margin:0 12px;text-decoration:none;color:#222;font-weight:500}
 </div>
 
 <!-- IMAGE MODAL -->
-<div id="imageModal" class="modal" onclick="closeModal(event)">
+<div id="imageModal" class="modal">
 <div class="modal-content image-grid">
+<span class="close-btn" onclick="closeImages()">✕</span>
 
 <img src="FBB 01 .jpg" onclick="preview(this.src)">
 <img src="FBB 02.png" onclick="preview(this.src)">
@@ -173,6 +183,22 @@ nav a{margin:0 12px;text-decoration:none;color:#222;font-weight:500}
 <span class="arrow right" onclick="next(event)">❯</span>
 </div>
 
+<!-- FORM -->
+<div id="formModal" class="modal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeForm()">✕</span>
+
+<h2>Book Consultation</h2>
+<form>
+<input placeholder="Your Name">
+<input placeholder="Email">
+<textarea placeholder="Your Message"></textarea>
+<button class="btn btn-blue">Submit</button>
+</form>
+
+</div>
+</div>
+
 <section id="about" class="section">
 <button class="btn btn-white">About Me</button>
 
@@ -183,7 +209,7 @@ I turn passive scrollers into <span style="color:#FF6B35">active followers</span
 
 <p>Based in Croydon, London, I help brands grow through digital content.</p>
 
-<img src="My Image.jpg" width="150" style="border-radius:50%">
+<img src="My Image.jpeg" width="150" style="border-radius:50%">
 </section>
 
 <script>
@@ -191,20 +217,17 @@ function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
-function openVideos(){
-document.getElementById('videoModal').style.display='block';
-}
+function openVideos(){document.getElementById('videoModal').style.display='block';}
+function closeVideos(){document.getElementById('videoModal').style.display='none';}
 
 function openImages(){
 document.getElementById('imageModal').style.display='block';
 images=[...document.querySelectorAll('#imageModal img')].map(i=>i.src);
 }
+function closeImages(){document.getElementById('imageModal').style.display='none';}
 
-function closeModal(e){
-if(e.target.classList.contains('modal')){
-e.target.style.display='none';
-}
-}
+function openForm(){document.getElementById('formModal').style.display='block';}
+function closeForm(){document.getElementById('formModal').style.display='none';}
 
 let images=[],index=0;
 
@@ -214,24 +237,11 @@ document.getElementById('previewImg').src=src;
 index=images.indexOf(src);
 }
 
-// FIXED: no accidental closing on arrows
-function next(e){
-e.stopPropagation();
-index=(index+1)%images.length;
-document.getElementById('previewImg').src=images[index];
-}
+function next(e){e.stopPropagation();index=(index+1)%images.length;preview(images[index]);}
+function prev(e){e.stopPropagation();index=(index-1+images.length)%images.length;preview(images[index]);}
 
-function prev(e){
-e.stopPropagation();
-index=(index-1+images.length)%images.length;
-document.getElementById('previewImg').src=images[index];
-}
-
-// click outside image closes preview ONLY
 document.getElementById('preview').onclick=function(e){
-if(e.target.id==="preview"){
-this.style.display="none";
-}
+if(e.target.id==="preview"){this.style.display="none";}
 };
 </script>
 
