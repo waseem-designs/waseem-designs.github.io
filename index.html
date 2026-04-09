@@ -8,32 +8,56 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{font-family:Poppins,sans-serif;margin:0;background:#f5f7fb;color:#222}
-header{display:flex;justify-content:space-between;padding:15px 30px;background:#fff;position:sticky;top:0;z-index:2000}
-nav a{margin:0 12px;text-decoration:none;color:#222}
+body{font-family:Poppins,sans-serif;margin:0;background:#ffffff;color:#222}
+
+/* NAV */
+header{display:flex;justify-content:space-between;padding:15px 30px;background:#fff;position:sticky;top:0;z-index:999}
+nav a{margin:0 12px;text-decoration:none;color:#222;font-weight:500}
+
+/* BUTTONS */
 .btn{padding:12px 22px;border-radius:25px;border:none;cursor:pointer}
 .btn-blue{background:#0077FF;color:#fff}
-.btn-white{background:#fff;border:1px solid #ddd}
+.btn-white{background:#fff;border:1px solid #ccc}
 
+/* SECTIONS */
 .section{padding:80px 20px;text-align:center}
-.hero h2{font-size:64px}
-.banner{height:300px;background:url('Banner.png') center/cover}
+.hero h2{font-size:64px;line-height:1.2}
+.hero p{max-width:700px;margin:auto}
 
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px}
-.gallery img{width:100%;border-radius:10px;cursor:pointer}
+/* BANNER */
+.banner{height:300px;background:url('Banner.png') center/cover;margin-top:30px}
 
-.box{background:#fff;padding:25px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.05)}
+/* SERVICES */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:auto}
+.box{background:#fff;padding:25px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.08);text-align:left}
 
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;overflow:auto;z-index:3000}
+/* PORTFOLIO */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:auto}
+.gallery-item{position:relative;cursor:pointer}
+.gallery img{width:100%;border-radius:12px}
+.overlay{position:absolute;bottom:0;background:rgba(0,0,0,.6);color:#fff;width:100%;padding:10px;border-radius:0 0 12px 12px}
+
+/* MODALS */
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;overflow:auto;z-index:2000}
 .modal-content{max-width:1100px;margin:auto;padding:40px}
 
-.preview{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;justify-content:center;align-items:center;z-index:4000}
+/* VIDEO GRID */
+.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+
+/* IMAGE GRID */
+.image-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.image-grid img{width:100%;cursor:pointer;border-radius:10px}
+
+/* PREVIEW */
+.preview{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;justify-content:center;align-items:center;z-index:3000}
 .preview img{max-width:90%;max-height:90vh}
-.arrow{position:absolute;color:#fff;font-size:40px;cursor:pointer}
+.arrow{position:absolute;font-size:50px;color:#fff;cursor:pointer}
 .left{left:20px}.right{right:20px}
 
+/* FORM */
 form{display:grid;gap:10px;max-width:400px;margin:auto}
 input,textarea{padding:10px;border:1px solid #ccc;border-radius:8px}
+
 </style>
 </head>
 
@@ -46,41 +70,53 @@ input,textarea{padding:10px;border:1px solid #ccc;border-radius:8px}
 <a href="#services">Services</a>
 <a href="#portfolio">Portfolio</a>
 <a href="#about">About</a>
-<button class="btn btn-blue" onclick="openForm()">Get Started</button>
 </nav>
 </header>
 
-<!-- HERO -->
+<!-- HOME -->
 <section id="home" class="section hero">
-<h2>Elevating Brands with <span style="color:#0077FF">Strategic</span> Design</h2>
-<button class="btn btn-blue" onclick="scrollToSection('portfolio')">View Portfolio</button>
+<h2>
+Elevating Brands With<br>
+<span style="color:#0077FF">Strategic Social Media</span><br>
+Design
+</h2>
+
+<p>
+I specialize in creating high-converting YouTube thumbnails, engaging short-form videos, and cohesive social media assets that turn viewers into followers.
+</p>
+
+<button class="btn btn-blue" onclick="scrollToSection('portfolio')">View Full Portfolio</button>
 <button class="btn btn-white" onclick="openForm()">Book Consultation</button>
+
 <div class="banner"></div>
 </section>
 
 <!-- SERVICES -->
 <section id="services" class="section">
 <h2>Core Expertise</h2>
-<div class="gallery">
+
+<div class="services">
 
 <div class="box">
 <h3>Social Media Design</h3>
-<p>I create assets that stop the scroll</p>
-<p>✔ Instagram Posts</p>
-<p>✔ Facebook Banners</p>
+<p>Visual storytelling that aligns with your brand identity. I create assets that stop the scroll.</p>
+<p>✔ Instagram Posts & Carousels</p>
+<p>✔ Facebook & LinkedIn Banners</p>
 </div>
 
 <div class="box">
-<h3>Video Production <span style="background:#ff6600;color:#fff;padding:5px 10px;border-radius:10px">Most Popular</span></h3>
-<p>High-performing content</p>
-<p>✔ Shorts / Reels</p>
-<p>✔ Thumbnails</p>
+<h3>Video Production 
+<span style="background:#FF6B35;color:#fff;padding:5px 10px;border-radius:8px;font-size:12px">Most Popular</span>
+</h3>
+<p>Dynamic video editing and thumbnails optimised for performance.</p>
+<p>✔ Short-form (Reels, TikTok)</p>
+<p>✔ High CTR YouTube Thumbnails</p>
 </div>
 
 <div class="box">
 <h3>Account Management</h3>
-<p>Allowing you to focus on your business</p>
-<p>✔ Scheduling</p>
+<p>End-to-end management allowing you to focus on your business.</p>
+<p>✔ Content Scheduling</p>
 <p>✔ Growth Analytics</p>
 </div>
 
@@ -89,20 +125,55 @@ input,textarea{padding:10px;border:1px solid #ccc;border-radius:8px}
 
 <!-- PORTFOLIO -->
 <section id="portfolio" class="section">
-<h2>Recent Work</h2>
+<h2>Recent Creative Work</h2>
 
 <div class="gallery">
-<div onclick="openVideos()"><img src="Videos Thumbnail.PNG"></div>
-<div onclick="openImages()"><img src="Immage gallery.png"></div>
-<div><img src="LIB 01.jpg"></div>
-<div><img src="Thumbnails 03.png"></div>
+
+<div class="gallery-item" onclick="openVideos()">
+<img src="Videos Thumbnail.PNG">
+<div class="overlay">Video Ads & Marketing</div>
 </div>
 
+<div class="gallery-item" onclick="openImages()">
+<img src="Immage gallery.png">
+<div class="overlay">Explore All Work</div>
+</div>
+
+<div class="gallery-item">
+<img src="LIB 01.jpg">
+<div class="overlay">Lifestyle Branding</div>
+</div>
+
+<div class="gallery-item">
+<img src="Thumbnails 03.png">
+<div class="overlay">Business Thumbnails</div>
+</div>
+
+</div>
 </section>
+
+<!-- VIDEO MODAL -->
+<div id="videoModal" class="modal">
+<div class="modal-content video-grid">
+
+<iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
+<iframe src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
+<iframe src="https://www.youtube.com/embed/07O40xrZhcg"></iframe>
+<iframe src="https://www.youtube.com/embed/hh1J-vUrCSE"></iframe>
+<iframe src="https://www.youtube.com/embed/8DcwOoXqnf8"></iframe>
+<iframe src="https://www.youtube.com/embed/QesPdSOCHp0"></iframe>
+<iframe src="https://www.youtube.com/embed/35iKyyiYhtw"></iframe>
+<iframe src="https://www.youtube.com/embed/aAD5Paf2DV4"></iframe>
+
+<hr style="grid-column:1/-1;margin-top:40px">
+<h3 style="grid-column:1/-1;text-align:center">Let's get in touch</h3>
+
+</div>
+</div>
 
 <!-- IMAGE MODAL -->
 <div id="imageModal" class="modal">
-<div class="modal-content gallery">
+<div class="modal-content image-grid">
 
 <img src="FBB 01 .jpg" onclick="preview(this.src)">
 <img src="FBB 02.png" onclick="preview(this.src)">
@@ -117,13 +188,9 @@ input,textarea{padding:10px;border:1px solid #ccc;border-radius:8px}
 <img src="Youtube Banners 02.jpg" onclick="preview(this.src)">
 <img src="Youtube Banners 03.jpg" onclick="preview(this.src)">
 
-</div>
-</div>
+<hr style="grid-column:1/-1;margin-top:40px">
+<h3 style="grid-column:1/-1;text-align:center">Let's get in touch</h3>
 
-<!-- VIDEO MODAL -->
-<div id="videoModal" class="modal">
-<div class="modal-content">
-<iframe width="100%" height="250" src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
 </div>
 </div>
 
@@ -141,7 +208,7 @@ input,textarea{padding:10px;border:1px solid #ccc;border-radius:8px}
 <form>
 <input placeholder="Your Name">
 <input placeholder="Email">
-<textarea placeholder="Message"></textarea>
+<textarea placeholder="Your Message"></textarea>
 <button class="btn btn-blue">Submit</button>
 </form>
 </div>
@@ -150,16 +217,26 @@ input,textarea{padding:10px;border:1px solid #ccc;border-radius:8px}
 <!-- ABOUT -->
 <section id="about" class="section">
 <button class="btn btn-white">About Me</button>
-<h2>I turn viewers into followers</h2>
-<img src="My Image.jpeg" width="150" style="border-radius:50%">
+
+<h2>
+Hi, I'm Waseem<br>
+I turn passive scrollers into <span style="color:#FF6B35">active followers</span>
+</h2>
+
+<p>
+Based in Croydon, London, I help brands grow through digital content.
+</p>
+
+<img src="My Image.jpg" width="150" style="border-radius:50%">
 </section>
 
 <script>
-
-let images=[], index=0;
-
 function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+function openVideos(){
+document.getElementById('videoModal').style.display='block';
 }
 
 function openImages(){
@@ -167,13 +244,11 @@ document.getElementById('imageModal').style.display='block';
 images=[...document.querySelectorAll('#imageModal img')].map(i=>i.src);
 }
 
-function openVideos(){
-document.getElementById('videoModal').style.display='block';
-}
-
 function openForm(){
 document.getElementById('formModal').style.display='block';
 }
+
+let images=[],index=0;
 
 function preview(src){
 document.getElementById('preview').style.display='flex';
@@ -195,7 +270,6 @@ function prev(){
 index=(index-1+images.length)%images.length;
 document.getElementById('previewImg').src=images[index];
 }
-
 </script>
 
 </body>
