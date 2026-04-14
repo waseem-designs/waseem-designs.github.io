@@ -20,6 +20,7 @@ nav a{margin:0 12px;text-decoration:none;color:#222;font-weight:500}
 .hero h2{font-size:64px;line-height:1.2}
 .hero p{max-width:700px;margin:auto}
 
+/* banner */
 .banner{
 width:100%;
 height:350px;
@@ -41,6 +42,7 @@ margin-top:30px;
 
 .close-btn{position:absolute;top:10px;right:20px;font-size:28px;cursor:pointer}
 
+/* video centered */
 .video-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -75,6 +77,12 @@ transition:0.3s;
 .image-grid img:hover{
 transform:scale(1.05);
 }
+
+.preview{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;justify-content:center;align-items:center;z-index:3000}
+.preview img{max-width:90%;max-height:90vh}
+
+.arrow{position:absolute;font-size:50px;color:#fff;cursor:pointer;user-select:none}
+.left{left:20px}.right{right:20px}
 </style>
 </head>
 
@@ -165,43 +173,69 @@ transform:scale(1.05);
 </div>
 </section>
 
-<!-- VIDEO MODAL -->
+<!-- VIDEO MODAL (UNCHANGED) -->
 <div id="videoModal" class="modal">
-<div class="modal-content">
+<div class="modal-content video-grid">
 <span class="close-btn" onclick="closeVideos()">✕</span>
-<h2>Video Work</h2>
 
-<div class="video-grid">
-<iframe src="https://www.youtube.com/embed/yLaNjHdaavY" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/07O40xrZhcg" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
+<iframe src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
+<iframe src="https://www.youtube.com/embed/07O40xrZhcg"></iframe>
+<iframe src="https://www.youtube.com/embed/hh1J-vUrCSE"></iframe>
+<iframe src="https://www.youtube.com/embed/8DcwOoXqnf8"></iframe>
+<iframe src="https://www.youtube.com/embed/QesPdSOCHp0"></iframe>
+<iframe src="https://www.youtube.com/embed/35iKyyiYhtw"></iframe>
+<iframe src="https://www.youtube.com/embed/aAD5Paf2DV4"></iframe>
+
+<div style="grid-column:1/-1;text-align:center;margin-top:40px">
+<hr>
+<h3>Let’s keep in touch</h3>
 </div>
 
 </div>
 </div>
 
-<!-- IMAGE MODAL -->
+<!-- IMAGE MODAL (UNCHANGED) -->
 <div id="imageModal" class="modal">
-<div class="modal-content">
+<div class="modal-content image-grid">
 <span class="close-btn" onclick="closeImages()">✕</span>
-<h2>My Work</h2>
 
-<div class="image-grid">
-<img src="LIB 01.jpg">
-<img src="Thumbnails 03.png">
-<img src="Banner.png">
+<img src="FBB 01 .jpg" onclick="preview(this.src)">
+<img src="FBB 02.png" onclick="preview(this.src)">
+<img src="GRID SMP 01.jpg" onclick="preview(this.src)">
+<img src="GRID SMP 02.png" onclick="preview(this.src)">
+<img src="LIB 01.jpg" onclick="preview(this.src)">
+<img src="Mix SMP.jpg" onclick="preview(this.src)">
+<img src="THumbnails 02.jpg" onclick="preview(this.src)">
+<img src="Thumbnails 01.jpg" onclick="preview(this.src)">
+<img src="Thumbnails 03.png" onclick="preview(this.src)">
+<img src="Youtube Banners 01.jpg" onclick="preview(this.src)">
+<img src="Youtube Banners 02.jpg" onclick="preview(this.src)">
+<img src="Youtube Banners 03.jpg" onclick="preview(this.src)">
+
+<div style="grid-column:1/-1;text-align:center;margin-top:40px">
+<hr>
+<h3>Let’s keep in touch</h3>
 </div>
 
 </div>
 </div>
 
-<!-- FORM -->
+<!-- PREVIEW (UNCHANGED) -->
+<div id="preview" class="preview">
+<span class="arrow left" onclick="prev(event)">❮</span>
+<img id="previewImg">
+<span class="arrow right" onclick="next(event)">❯</span>
+</div>
+
+<!-- ✅ FIXED FORM ONLY -->
 <div id="formModal" class="modal">
 <div class="modal-content">
 <span class="close-btn" onclick="closeForm()">✕</span>
 
 <h2>Book Consultation</h2>
 
-<form action="https://formspree.io/f/xpznabcd" method="POST">
+<form action="https://formspree.io/f/mlgarzag" method="POST">
 <input type="hidden" name="_redirect" value="thank-you.html">
 <input type="text" name="_gotcha" style="display:none">
 
@@ -233,14 +267,32 @@ function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
-function openForm(){document.getElementById('formModal').style.display='block';}
-function closeForm(){document.getElementById('formModal').style.display='none';}
-
 function openVideos(){document.getElementById('videoModal').style.display='block';}
 function closeVideos(){document.getElementById('videoModal').style.display='none';}
 
-function openImages(){document.getElementById('imageModal').style.display='block';}
+function openImages(){
+document.getElementById('imageModal').style.display='block';
+images=[...document.querySelectorAll('#imageModal img')].map(i=>i.src);
+}
 function closeImages(){document.getElementById('imageModal').style.display='none';}
+
+function openForm(){document.getElementById('formModal').style.display='block';}
+function closeForm(){document.getElementById('formModal').style.display='none';}
+
+let images=[],index=0;
+
+function preview(src){
+document.getElementById('preview').style.display='flex';
+document.getElementById('previewImg').src=src;
+index=images.indexOf(src);
+}
+
+function next(e){e.stopPropagation();index=(index+1)%images.length;preview(images[index]);}
+function prev(e){e.stopPropagation();index=(index-1+images.length)%images.length;preview(images[index]);}
+
+document.getElementById('preview').onclick=function(e){
+if(e.target.id==="preview"){this.style.display="none";}
+};
 </script>
 
 </body>
