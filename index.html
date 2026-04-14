@@ -41,14 +41,6 @@ margin-top:30px;
 
 .close-btn{position:absolute;top:10px;right:20px;font-size:28px;cursor:pointer}
 
-/* ✅ SUCCESS MESSAGE STYLE */
-.success-message{
-display:none;
-color:green;
-font-weight:600;
-margin-top:15px;
-}
-
 .video-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -83,12 +75,6 @@ transition:0.3s;
 .image-grid img:hover{
 transform:scale(1.05);
 }
-
-.preview{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;justify-content:center;align-items:center;z-index:3000}
-.preview img{max-width:90%;max-height:90vh}
-
-.arrow{position:absolute;font-size:50px;color:#fff;cursor:pointer;user-select:none}
-.left{left:20px}.right{right:20px}
 </style>
 </head>
 
@@ -179,27 +165,51 @@ transform:scale(1.05);
 </div>
 </section>
 
-<!-- ✅ FIXED FORM -->
+<!-- VIDEO MODAL -->
+<div id="videoModal" class="modal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeVideos()">✕</span>
+<h2>Video Work</h2>
+
+<div class="video-grid">
+<iframe src="https://www.youtube.com/embed/yLaNjHdaavY" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/07O40xrZhcg" allowfullscreen></iframe>
+</div>
+
+</div>
+</div>
+
+<!-- IMAGE MODAL -->
+<div id="imageModal" class="modal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeImages()">✕</span>
+<h2>My Work</h2>
+
+<div class="image-grid">
+<img src="LIB 01.jpg">
+<img src="Thumbnails 03.png">
+<img src="Banner.png">
+</div>
+
+</div>
+</div>
+
+<!-- FORM -->
 <div id="formModal" class="modal">
 <div class="modal-content">
 <span class="close-btn" onclick="closeForm()">✕</span>
 
 <h2>Book Consultation</h2>
 
-<form id="contact-form" action="https://formspree.io/f/xpznabcd" method="POST">
-
-<input type="hidden" name="_gotcha" style="display:none">
+<form action="https://formspree.io/f/xpznabcd" method="POST">
+<input type="hidden" name="_redirect" value="thank-you.html">
+<input type="text" name="_gotcha" style="display:none">
 
 <input type="text" name="name" placeholder="Your Name" required><br><br>
-
 <input type="email" name="email" placeholder="Email" required><br><br>
-
 <textarea name="message" placeholder="Your Message" required></textarea><br><br>
 
 <button type="submit" class="btn btn-blue">Submit</button>
-
-<p id="success-message" class="success-message">✅ Message sent successfully!</p>
-
 </form>
 
 </div>
@@ -222,28 +232,15 @@ I turn passive scrollers into <span style="color:#FF6B35">active followers</span
 function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
+
 function openForm(){document.getElementById('formModal').style.display='block';}
 function closeForm(){document.getElementById('formModal').style.display='none';}
 
-// ✅ FORM SUBMISSION SCRIPT
-const form = document.getElementById("contact-form");
+function openVideos(){document.getElementById('videoModal').style.display='block';}
+function closeVideos(){document.getElementById('videoModal').style.display='none';}
 
-form.addEventListener("submit", async function(e){
-e.preventDefault();
-
-const data = new FormData(form);
-
-const response = await fetch(form.action, {
-method: "POST",
-body: data,
-headers: { 'Accept': 'application/json' }
-});
-
-if(response.ok){
-form.reset();
-document.getElementById("success-message").style.display = "block";
-}
-});
+function openImages(){document.getElementById('imageModal').style.display='block';}
+function closeImages(){document.getElementById('imageModal').style.display='none';}
 </script>
 
 </body>
