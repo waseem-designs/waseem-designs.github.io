@@ -122,7 +122,9 @@ transform:scale(1.05);
 
 <div class="box">
 <h3>Video Production <span style="background:#FF6B35;color:#fff;padding:5px 10px;border-radius:8px;font-size:12px">Most Popular</span></h3>
+
 <p>High-impact video editing and thumbnail design focused on audience retention and algorithm performance.</p>
+
 <p>✔ Short-form content (Reels, TikTok, YouTube Shorts)</p>
 <p>✔ High CTR YouTube Thumbnails</p>
 <p>✔ Engaging storytelling edits for brand growth</p>
@@ -131,7 +133,9 @@ transform:scale(1.05);
 
 <div class="box">
 <h3>Account Management</h3>
+
 <p>Complete social media management solution designed to grow your online presence while you focus on your business.</p>
+
 <p>✔ Content planning & scheduling</p>
 <p>✔ Engagement & audience growth strategy</p>
 <p>✔ Performance tracking & analytics reporting</p>
@@ -167,69 +171,14 @@ transform:scale(1.05);
 </div>
 </section>
 
-<!-- VIDEO MODAL -->
-<div id="videoModal" class="modal">
-<div class="modal-content video-grid">
-<span class="close-btn" onclick="closeVideos()">✕</span>
-
-<iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
-<iframe src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
-<iframe src="https://www.youtube.com/embed/07O40xrZhcg"></iframe>
-<iframe src="https://www.youtube.com/embed/hh1J-vUrCSE"></iframe>
-<iframe src="https://www.youtube.com/embed/8DcwOoXqnf8"></iframe>
-<iframe src="https://www.youtube.com/embed/QesPdSOCHp0"></iframe>
-<iframe src="https://www.youtube.com/embed/35iKyyiYhtw"></iframe>
-<iframe src="https://www.youtube.com/embed/aAD5Paf2DV4"></iframe>
-
-<div style="grid-column:1/-1;text-align:center;margin-top:40px">
-<hr>
-<h3>Let’s keep in touch</h3>
-</div>
-
-</div>
-</div>
-
-<!-- IMAGE MODAL -->
-<div id="imageModal" class="modal">
-<div class="modal-content image-grid">
-<span class="close-btn" onclick="closeImages()">✕</span>
-
-<img src="FBB 01 .jpg" onclick="preview(this.src)">
-<img src="FBB 02.png" onclick="preview(this.src)">
-<img src="GRID SMP 01.jpg" onclick="preview(this.src)">
-<img src="GRID SMP 02.png" onclick="preview(this.src)">
-<img src="LIB 01.jpg" onclick="preview(this.src)">
-<img src="Mix SMP.jpg" onclick="preview(this.src)">
-<img src="THumbnails 02.jpg" onclick="preview(this.src)">
-<img src="Thumbnails 01.jpg" onclick="preview(this.src)">
-<img src="Thumbnails 03.png" onclick="preview(this.src)">
-<img src="Youtube Banners 01.jpg" onclick="preview(this.src)">
-<img src="Youtube Banners 02.jpg" onclick="preview(this.src)">
-<img src="Youtube Banners 03.jpg" onclick="preview(this.src)">
-
-<div style="grid-column:1/-1;text-align:center;margin-top:40px">
-<hr>
-<h3>Let’s keep in touch</h3>
-</div>
-
-</div>
-</div>
-
-<!-- PREVIEW -->
-<div id="preview" class="preview">
-<span class="arrow left" onclick="prev(event)">❮</span>
-<img id="previewImg">
-<span class="arrow right" onclick="next(event)">❯</span>
-</div>
-
-<!-- FORM -->
+<!-- FORM (ONLY FIXED PART) -->
 <div id="formModal" class="modal">
 <div class="modal-content">
 <span class="close-btn" onclick="closeForm()">✕</span>
 
 <h2>Book Consultation</h2>
 
-<form action="https://formspree.io/f/mlgarzag" method="POST">
+<form action="https://formspree.io/f/xpznabcd" method="POST">
 
 <input type="text" name="name" placeholder="Your Name" required><br><br>
 
@@ -261,33 +210,8 @@ I turn passive scrollers into <span style="color:#FF6B35">active followers</span
 function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
-
-function openVideos(){document.getElementById('videoModal').style.display='block';}
-function closeVideos(){document.getElementById('videoModal').style.display='none';}
-
-function openImages(){
-document.getElementById('imageModal').style.display='block';
-images=[...document.querySelectorAll('#imageModal img')].map(i=>i.src);
-}
-function closeImages(){document.getElementById('imageModal').style.display='none';}
-
 function openForm(){document.getElementById('formModal').style.display='block';}
 function closeForm(){document.getElementById('formModal').style.display='none';}
-
-let images=[],index=0;
-
-function preview(src){
-document.getElementById('preview').style.display='flex';
-document.getElementById('previewImg').src=src;
-index=images.indexOf(src);
-}
-
-function next(e){e.stopPropagation();index=(index+1)%images.length;preview(images[index]);}
-function prev(e){e.stopPropagation();index=(index-1+images.length)%images.length;preview(images[index]);}
-
-document.getElementById('preview').onclick=function(e){
-if(e.target.id==="preview"){this.style.display="none";}
-};
 </script>
 
 </body>
