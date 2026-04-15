@@ -20,6 +20,7 @@ nav a{margin:0 12px;text-decoration:none;color:#222;font-weight:500}
 .hero h2{font-size:64px;line-height:1.2}
 .hero p{max-width:700px;margin:auto}
 
+/* banner */
 .banner{
 width:100%;
 height:350px;
@@ -41,6 +42,7 @@ margin-top:30px;
 
 .close-btn{position:absolute;top:10px;right:20px;font-size:28px;cursor:pointer}
 
+/* video centered */
 .video-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -122,7 +124,9 @@ transform:scale(1.05);
 
 <div class="box">
 <h3>Video Production <span style="background:#FF6B35;color:#fff;padding:5px 10px;border-radius:8px;font-size:12px">Most Popular</span></h3>
+
 <p>High-impact video editing and thumbnail design focused on audience retention and algorithm performance.</p>
+
 <p>✔ Short-form content (Reels, TikTok, YouTube Shorts)</p>
 <p>✔ High CTR YouTube Thumbnails</p>
 <p>✔ Engaging storytelling edits for brand growth</p>
@@ -131,7 +135,9 @@ transform:scale(1.05);
 
 <div class="box">
 <h3>Account Management</h3>
+
 <p>Complete social media management solution designed to grow your online presence while you focus on your business.</p>
+
 <p>✔ Content planning & scheduling</p>
 <p>✔ Engagement & audience growth strategy</p>
 <p>✔ Performance tracking & analytics reporting</p>
@@ -167,7 +173,7 @@ transform:scale(1.05);
 </div>
 </section>
 
-<!-- VIDEO MODAL -->
+<!-- VIDEO MODAL (UNCHANGED) -->
 <div id="videoModal" class="modal">
 <div class="modal-content video-grid">
 <span class="close-btn" onclick="closeVideos()">✕</span>
@@ -189,7 +195,7 @@ transform:scale(1.05);
 </div>
 </div>
 
-<!-- IMAGE MODAL -->
+<!-- IMAGE MODAL (UNCHANGED) -->
 <div id="imageModal" class="modal">
 <div class="modal-content image-grid">
 <span class="close-btn" onclick="closeImages()">✕</span>
@@ -215,7 +221,7 @@ transform:scale(1.05);
 </div>
 </div>
 
-<!-- PREVIEW -->
+<!-- PREVIEW (UNCHANGED) -->
 <div id="preview" class="preview">
 <span class="arrow left" onclick="prev(event)">❮</span>
 <img id="previewImg">
@@ -229,19 +235,15 @@ transform:scale(1.05);
 
 <h2>Book Consultation</h2>
 
-<form action="https://formspree.io/f/xpznabcd" method="POST">
+<form action="https://formspree.io/f/mlgarzag" method="POST">
+<input type="hidden" name="_redirect" value="thank-you.html">
+<input type="text" name="_gotcha" style="display:none">
 
 <input type="text" name="name" placeholder="Your Name" required><br><br>
-
 <input type="email" name="email" placeholder="Email" required><br><br>
-
 <textarea name="message" placeholder="Your Message" required></textarea><br><br>
 
-<input type="hidden" name="_subject" value="New Message from Website">
-<input type="hidden" name="_captcha" value="false">
-
 <button type="submit" class="btn btn-blue">Submit</button>
-
 </form>
 
 </div>
