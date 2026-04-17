@@ -45,8 +45,6 @@ margin-top:30px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:25px;
-justify-content:center;
-align-items:center;
 max-width:1000px;
 margin:auto;
 }
@@ -69,17 +67,12 @@ height:200px;
 object-fit:cover;
 border-radius:10px;
 cursor:pointer;
-transition:0.3s;
-}
-
-.image-grid img:hover{
-transform:scale(1.05);
 }
 
 .preview{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;justify-content:center;align-items:center;z-index:3000}
 .preview img{max-width:90%;max-height:90vh}
 
-.arrow{position:absolute;font-size:50px;color:#fff;cursor:pointer;user-select:none}
+.arrow{position:absolute;font-size:50px;color:#fff;cursor:pointer}
 .left{left:20px}.right{right:20px}
 </style>
 </head>
@@ -100,7 +93,7 @@ transform:scale(1.05);
 <section id="home" class="section hero">
 <h2>Elevating Brands With<br><span style="color:#0077FF">Strategic Social Media</span><br>Design</h2>
 
-<p>I specialize in creating high-converting YouTube thumbnails, engaging short-form videos, and cohesive social media assets that turn viewers into followers.</p>
+<p>I specialize in creating high-converting YouTube thumbnails and social media assets.</p>
 
 <button class="btn btn-blue" onclick="scrollToSection('portfolio')">View Full Portfolio</button>
 <button class="btn btn-white" onclick="openForm()">Book Consultation</button>
@@ -121,6 +114,16 @@ transform:scale(1.05);
 <img src="Immage gallery.png">
 <div class="overlay">Explore All Work</div>
 </div>
+
+<div class="gallery-item">
+<img src="LIB 01.jpg">
+<div class="overlay">Lifestyle Branding</div>
+</div>
+
+<div class="gallery-item">
+<img src="Thumbnails 03.png">
+<div class="overlay">Business Thumbnails</div>
+</div>
 </div>
 </section>
 
@@ -131,6 +134,7 @@ transform:scale(1.05);
 
 <iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
 <iframe src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
+<iframe src="https://www.youtube.com/embed/07O40xrZhcg"></iframe>
 </div>
 </div>
 
@@ -141,7 +145,16 @@ transform:scale(1.05);
 
 <img src="FBB 01 .jpg" onclick="preview(this.src)">
 <img src="FBB 02.png" onclick="preview(this.src)">
+<img src="GRID SMP 01.jpg" onclick="preview(this.src)">
+<img src="GRID SMP 02.png" onclick="preview(this.src)">
 </div>
+</div>
+
+<!-- PREVIEW -->
+<div id="preview" class="preview">
+<span class="arrow left" onclick="prev(event)">❮</span>
+<img id="previewImg">
+<span class="arrow right" onclick="next(event)">❯</span>
 </div>
 
 <!-- FORM -->
@@ -151,14 +164,12 @@ transform:scale(1.05);
 
 <h2>Book Consultation</h2>
 
-<form action="https://formspree.io/f/mlgarzag" method="POST">
-<input type="hidden" name="_next" value="https://waseem-designs.github.io/thank-you.html">
+<form action="https://formspree.io/f/mlgarzag" method="POST" onsubmit="handleSubmit(event)">
+<input type="text" name="name" required placeholder="Your Name"><br><br>
+<input type="email" name="email" required placeholder="Email"><br><br>
+<textarea name="message" required placeholder="Your Message"></textarea><br><br>
 
-<input type="text" name="name" placeholder="Your Name" required><br><br>
-<input type="email" name="email" placeholder="Email" required><br><br>
-<textarea name="message" placeholder="Your Message" required></textarea><br><br>
-
-<button type="submit" class="btn btn-blue">Submit</button>
+<button class="btn btn-blue">Submit</button>
 </form>
 
 </div>
@@ -172,26 +183,47 @@ document.getElementById(id).scrollIntoView({behavior:'smooth'});
 function openVideos(){document.getElementById('videoModal').style.display='block';}
 function closeVideos(){document.getElementById('videoModal').style.display='none';}
 
-function openImages(){document.getElementById('imageModal').style.display='block';}
+function openImages(){
+document.getElementById('imageModal').style.display='block';
+images=[...document.querySelectorAll('#imageModal img')].map(i=>i.src);
+}
 function closeImages(){document.getElementById('imageModal').style.display='none';}
 
 function openForm(){document.getElementById('formModal').style.display='block';}
 function closeForm(){document.getElementById('formModal').style.display='none';}
 
+let images=[],index=0;
+
 function preview(src){
-let p=document.createElement('div');
-p.style.position='fixed';
-p.style.top='0';
-p.style.left='0';
-p.style.width='100%';
-p.style.height='100%';
-p.style.background='#000';
-p.style.display='flex';
-p.style.justifyContent='center';
-p.style.alignItems='center';
-p.innerHTML='<img src="'+src+'" style="max-width:90%;max-height:90%">';
-p.onclick=()=>p.remove();
-document.body.appendChild(p);
+document.getElementById('preview').style.display='flex';
+document.getElementById('previewImg').src=src;
+index=images.indexOf(src);
+}
+
+function next(e){e.stopPropagation();index=(index+1)%images.length;preview(images[index]);}
+function prev(e){e.stopPropagation();index=(index-1+images.length)%images.length;preview(images[index]);}
+
+document.getElementById('preview').onclick=function(e){
+if(e.target.id==="preview"){this.style.display="none";}
+};
+
+function handleSubmit(e){
+e.preventDefault();
+
+let form = e.target;
+let data = new FormData(form);
+
+fetch(form.action, {
+method: "POST",
+body: data,
+headers: { 'Accept': 'application/json' }
+})
+.then(() => {
+window.location.href = "https://waseem-designs.github.io/thank-you.html";
+})
+.catch(() => {
+alert("Something went wrong. Try again.");
+});
 }
 </script>
 
