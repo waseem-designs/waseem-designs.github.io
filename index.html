@@ -45,6 +45,8 @@ margin-top:30px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:25px;
+justify-content:center;
+align-items:center;
 max-width:1000px;
 margin:auto;
 }
@@ -67,12 +69,17 @@ height:200px;
 object-fit:cover;
 border-radius:10px;
 cursor:pointer;
+transition:0.3s;
+}
+
+.image-grid img:hover{
+transform:scale(1.05);
 }
 
 .preview{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;justify-content:center;align-items:center;z-index:3000}
 .preview img{max-width:90%;max-height:90vh}
 
-.arrow{position:absolute;font-size:50px;color:#fff;cursor:pointer}
+.arrow{position:absolute;font-size:50px;color:#fff;cursor:pointer;user-select:none}
 .left{left:20px}.right{right:20px}
 </style>
 </head>
@@ -93,12 +100,45 @@ cursor:pointer;
 <section id="home" class="section hero">
 <h2>Elevating Brands With<br><span style="color:#0077FF">Strategic Social Media</span><br>Design</h2>
 
-<p>I specialize in creating high-converting YouTube thumbnails and social media assets.</p>
+<p>I specialize in creating high-converting YouTube thumbnails, engaging short-form videos, and cohesive social media assets that turn viewers into followers.</p>
 
 <button class="btn btn-blue" onclick="scrollToSection('portfolio')">View Full Portfolio</button>
 <button class="btn btn-white" onclick="openForm()">Book Consultation</button>
 
 <div class="banner"></div>
+</section>
+
+<section id="services" class="section">
+<h2>Core Expertise</h2>
+
+<div class="services">
+
+<div class="box">
+<h3>Social Media Design</h3>
+<p>Visual storytelling that aligns with your brand identity. I create assets that stop the scroll.</p>
+<p>✔ Instagram Posts & Carousels</p>
+<p>✔ Facebook & LinkedIn Banners</p>
+</div>
+
+<div class="box">
+<h3>Video Production <span style="background:#FF6B35;color:#fff;padding:5px 10px;border-radius:8px;font-size:12px">Most Popular</span></h3>
+<p>High-impact video editing and thumbnail design focused on audience retention and algorithm performance.</p>
+<p>✔ Short-form content (Reels, TikTok, YouTube Shorts)</p>
+<p>✔ High CTR YouTube Thumbnails</p>
+<p>✔ Engaging storytelling edits for brand growth</p>
+<p>✔ Fast-paced, modern editing styles tailored for social media</p>
+</div>
+
+<div class="box">
+<h3>Account Management</h3>
+<p>Complete social media management solution designed to grow your online presence while you focus on your business.</p>
+<p>✔ Content planning & scheduling</p>
+<p>✔ Engagement & audience growth strategy</p>
+<p>✔ Performance tracking & analytics reporting</p>
+<p>✔ Consistent brand identity across all platforms</p>
+</div>
+
+</div>
 </section>
 
 <section id="portfolio" class="section">
@@ -135,6 +175,17 @@ cursor:pointer;
 <iframe src="https://www.youtube.com/embed/yLaNjHdaavY"></iframe>
 <iframe src="https://www.youtube.com/embed/PnxW_Ctmsts"></iframe>
 <iframe src="https://www.youtube.com/embed/07O40xrZhcg"></iframe>
+<iframe src="https://www.youtube.com/embed/hh1J-vUrCSE"></iframe>
+<iframe src="https://www.youtube.com/embed/8DcwOoXqnf8"></iframe>
+<iframe src="https://www.youtube.com/embed/QesPdSOCHp0"></iframe>
+<iframe src="https://www.youtube.com/embed/35iKyyiYhtw"></iframe>
+<iframe src="https://www.youtube.com/embed/aAD5Paf2DV4"></iframe>
+
+<div style="grid-column:1/-1;text-align:center;margin-top:40px">
+<hr>
+<h3>Let’s keep in touch</h3>
+</div>
+
 </div>
 </div>
 
@@ -147,6 +198,20 @@ cursor:pointer;
 <img src="FBB 02.png" onclick="preview(this.src)">
 <img src="GRID SMP 01.jpg" onclick="preview(this.src)">
 <img src="GRID SMP 02.png" onclick="preview(this.src)">
+<img src="LIB 01.jpg" onclick="preview(this.src)">
+<img src="Mix SMP.jpg" onclick="preview(this.src)">
+<img src="THumbnails 02.jpg" onclick="preview(this.src)">
+<img src="Thumbnails 01.jpg" onclick="preview(this.src)">
+<img src="Thumbnails 03.png" onclick="preview(this.src)">
+<img src="Youtube Banners 01.jpg" onclick="preview(this.src)">
+<img src="Youtube Banners 02.jpg" onclick="preview(this.src)">
+<img src="Youtube Banners 03.jpg" onclick="preview(this.src)">
+
+<div style="grid-column:1/-1;text-align:center;margin-top:40px">
+<hr>
+<h3>Let’s keep in touch</h3>
+</div>
+
 </div>
 </div>
 
@@ -174,6 +239,16 @@ cursor:pointer;
 
 </div>
 </div>
+
+<section id="about" class="section">
+<button class="btn btn-white">About Me</button>
+
+<h2>Hi, I'm Waseem<br>I turn passive scrollers into <span style="color:#FF6B35">active followers</span></h2>
+
+<p>Based in Croydon, London, I help brands grow through digital content.</p>
+
+<img src="My Image.jpeg" width="150" style="border-radius:50%">
+</section>
 
 <script>
 function scrollToSection(id){
@@ -209,20 +284,17 @@ if(e.target.id==="preview"){this.style.display="none";}
 
 function handleSubmit(e){
 e.preventDefault();
-
 let form = e.target;
 let data = new FormData(form);
 
-fetch(form.action, {
-method: "POST",
-body: data,
-headers: { 'Accept': 'application/json' }
-})
-.then(() => {
-window.location.href = "https://waseem-designs.github.io/thank-you.html";
-})
-.catch(() => {
-alert("Something went wrong. Try again.");
+fetch(form.action,{
+method:"POST",
+body:data,
+headers:{'Accept':'application/json'}
+}).then(()=>{
+window.location.href="https://waseem-designs.github.io/thank-you.html";
+}).catch(()=>{
+alert("Something went wrong.");
 });
 }
 </script>
