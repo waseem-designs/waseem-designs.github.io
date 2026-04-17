@@ -285,6 +285,57 @@ function prev(e){e.stopPropagation();index=(index-1+images.length)%images.length
 document.getElementById('preview').onclick=function(e){
 if(e.target.id==="preview"){this.style.display="none";}
 };
+<script>
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+function openVideos(){document.getElementById('videoModal').style.display='block';}
+function closeVideos(){document.getElementById('videoModal').style.display='none';}
+
+function openImages(){
+document.getElementById('imageModal').style.display='block';
+images=[...document.querySelectorAll('#imageModal img')].map(i=>i.src);
+}
+function closeImages(){document.getElementById('imageModal').style.display='none';}
+
+function openForm(){document.getElementById('formModal').style.display='block';}
+function closeForm(){document.getElementById('formModal').style.display='none';}
+
+let images=[],index=0;
+
+function preview(src){
+document.getElementById('preview').style.display='flex';
+document.getElementById('previewImg').src=src;
+index=images.indexOf(src);
+}
+
+function next(e){e.stopPropagation();index=(index+1)%images.length;preview(images[index]);}
+function prev(e){e.stopPropagation();index=(index-1+images.length)%images.length;preview(images[index]);}
+
+document.getElementById('preview').onclick=function(e){
+if(e.target.id==="preview"){this.style.display="none";}
+};
+
+// ✅ FINAL FIX (DO NOT TOUCH)
+function handleSubmit(e){
+e.preventDefault();
+
+let form = e.target;
+let data = new FormData(form);
+
+fetch(form.action, {
+method: "POST",
+body: data,
+headers: { 'Accept': 'application/json' }
+})
+.then(() => {
+window.location.href = "https://waseem-designs.github.io/thank-you.html";
+})
+.catch(() => {
+alert("Something went wrong. Please try again.");
+});
+}
 </script>
 
 </body>
